@@ -1,17 +1,17 @@
 let arquivos = [
 	"/",
 	"/index",
-//	"/offline.html",
-//	"/bezerro/listabezerros",
-//	"/touro/listatouros",
-//	"/vaca/listavacas",
-//	"/manejo/listamanejo",
-//	"css/style.css",
-//	"bootstrap/css/bootstrap.min.css",
-//	"bootstrap/js/bootstrap.min.js",
-//	"js/filtroTabela.js",
-//	"js/jquery.js",
-//	"js/alertOffline.js",
+	"/offline",
+	"bezerro/listabezerros",
+	"touro/listatouros",
+	"vaca/listavacas",
+	"manejo/listamanejo",
+	"css/style.css",
+	"bootstrap/css/bootstrap.min.css",
+	"bootstrap/js/bootstrap.min.js",
+	"js/filtroTabela.js",
+	"js/jquery.js",
+	"js/alertOffline.js",
 ]
 
 
