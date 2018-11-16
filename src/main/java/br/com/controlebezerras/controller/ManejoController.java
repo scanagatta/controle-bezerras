@@ -30,8 +30,8 @@ public class ManejoController {
 
 	@RequestMapping("/listamanejo")
 	public String listamanejo(Model model) {
-		model.addAttribute("data", LocalDate.now().toString());
-		Iterable<Dia> dias = diaService.listaPorData(LocalDate.now().toString());
+		model.addAttribute("data", LocalDate.now());
+		Iterable<Dia> dias = diaService.listaPorData(LocalDate.now());
 
 		model.addAttribute("dias", dias);
 		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();

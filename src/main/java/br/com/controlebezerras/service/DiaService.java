@@ -27,6 +27,14 @@ public class DiaService {
 		}
 	}
 	
+	public List<Dia> listaPorData(LocalDate string) {
+		try {
+			return repository.listaPorData(string);
+		} catch (NoResultException e) {
+			return new ArrayList<>();
+		}
+	}
+	
 	public void update(Dia dia) {
 		repository.update(dia.getId(), dia.getPesoNoDia(), dia.getAlturaNoDia());
 	}

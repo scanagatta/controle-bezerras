@@ -1,5 +1,6 @@
 package br.com.controlebezerras.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -14,6 +15,9 @@ public interface DiaRepository extends CrudRepository<Dia, Long> {
 
 	@Query("select d from dia d where data_do_dia = ?1")
 	List<Dia> listaPorData(String data);
+	
+	@Query("select d from dia d where data_do_dia = ?1")
+	List<Dia> listaPorData(LocalDate data);
 
 	@Transactional
 	@Modifying
