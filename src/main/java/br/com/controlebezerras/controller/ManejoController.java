@@ -6,16 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.controlebezerras.extras.FormatadorDataEHora;
-import br.com.controlebezerras.model.Bezerro;
 import br.com.controlebezerras.model.Dia;
-import br.com.controlebezerras.model.Vaca;
-import br.com.controlebezerras.service.BezerroService;
 import br.com.controlebezerras.service.DiaService;
 
 @Controller
@@ -39,7 +35,7 @@ public class ManejoController {
 
 		return "listamanejo";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public Dia salvar(Dia dia, BindingResult result, Model model) {
@@ -48,7 +44,7 @@ public class ManejoController {
 		return dia;
 
 	}
-	
+
 //	@RequestMapping("/pesquisar/data={data_do_dia}")
 //	public String pesquisar(@PathVariable("data_do_dia") LocalDate data, Model model) {
 //
@@ -86,7 +82,6 @@ public class ManejoController {
 		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();
 		model.addAttribute("dataEHoraAtual", dataEHoraAtual);
 
-		
 		Iterable<Dia> dias = diaService.listaPorData(data.toString());
 
 		model.addAttribute("dias", dias);
