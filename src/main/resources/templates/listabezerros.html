@@ -80,7 +80,7 @@
       <div class="pagina">
         <div class="row">
           <div class="col-sm-5">
-            <a href="adicionarbezerro" class="btn btn-md btn-primary" title="Adicionar Bezerro"><span class="glyphicon glyphicon-plus"></span> Adicionar um novo bezerro(a)</a>
+            <a href="adicionarbezerro" class="btn btn-md btn-primary" title="Adicionar Bezerro"><i class="fas fa-plus"></i> Adicionar um novo bezerro(a)</a>
           </div>
           <div class="col-sm-offset-2 col-sm-5 col-md-offset-3 col-md-4 text-right">
             <div class="input-group">
@@ -120,7 +120,7 @@
                   <td><span th:text="${bezerro.observacao}"></span></td>
                   <td class="text-center">
                     <a th:href="@{/bezerro/perfil/{codigo}(codigo=${bezerro.id})}"  title="Ir para o perfil" class="btn-xs btn-info">
-                    <i class="glyphicon glyphicon-eye-open"></i></a>
+                    <i class="fas fa-eye"></i></a>
                     <a th:href="@{/bezerro/excluir/{codigo}(codigo=${bezerro.id})}" title="Excluir" class="btn-xs btn-danger">
                     <i class="fas fa-trash-alt"></i></a>
                   </td>
