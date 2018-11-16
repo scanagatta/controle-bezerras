@@ -25,7 +25,7 @@ public class IndexController {
 	@RequestMapping("/index")
 	public String index(Model model) {
 		preencheDados(model);
-		return "/index";
+		return "index";
 	}
 
 	@RequestMapping("/")
