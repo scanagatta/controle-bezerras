@@ -189,7 +189,7 @@ public class Bezerro implements Comparable<Bezerro> {
 			}
 
 			if (dias > 31) {
-				dias = 1;
+				dias = 0;
 				meses = meses + 1;
 			}
 
