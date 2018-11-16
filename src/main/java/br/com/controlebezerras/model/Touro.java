@@ -1,0 +1,122 @@
+package br.com.controlebezerras.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity(name = "touro")
+public class Touro {
+	
+	@Id
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
+	private Long id = null;
+	
+	private String numero;
+	private String nome;
+	
+	private Integer qtdFilhos;
+	private StatusAdulto status;
+	
+	private Raca raca;
+	
+	@OneToMany(mappedBy = "touro")
+	private List<Bezerro> bezerros;
+	
+	public Touro() {
+		bezerros = new ArrayList<Bezerro>();
+		qtdFilhos = 0;
+		status = StatusAdulto.ATIVO;
+	}
+	
+	public void adicionarBezerro(Bezerro bezerro) {
+		bezerros.add(bezerro);
+	}
+	
+	public Touro(	Long id, String numero, String nome, Integer qtdFilhos, StatusAdulto status, Raca raca,
+					List<Bezerro> bezerros) {
+		super();
+		this.id = id;
+		this.numero = numero;
+		this.nome = nome;
+		this.qtdFilhos = qtdFilhos;
+		this.status = status;
+		this.raca = raca;
+		this.bezerros = bezerros;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public String getNumero() {
+		return numero;
+	}
+	
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public String getNumeroNome() {
+		String texto = numero + " - " + nome;
+		if (numero != null && nome != null) {
+			return texto;
+		} else if (numero == null) {
+			return nome;
+		} else {
+			return numero;
+		}
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public Integer getQtdFilhos() {
+		return qtdFilhos;
+	}
+	
+	public void setQtdFilhos(Integer qtdFilhos) {
+		this.qtdFilhos = qtdFilhos;
+	}
+	
+	public List<Bezerro> getBezerros() {
+		return bezerros;
+	}
+	
+	public void setBezerros(List<Bezerro> bezerros) {
+		this.bezerros = bezerros;
+	}
+	
+	public StatusAdulto getStatus() {
+		return status;
+	}
+	
+	public void setStatus(StatusAdulto status) {
+		this.status = status;
+	}
+	
+	public Raca getRaca() {
+		return raca;
+	}
+	
+	public void setRaca(Raca raca) {
+		this.raca = raca;
+	}
+	
+}

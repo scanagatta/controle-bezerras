@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="Description" content="Controle Bezerras">
+    <meta http-equiv="Content-Language" content="pt-br">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#436073">
+    <meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png">
+    <meta name="theme-color" content="#436073">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <title>Lista de Bezerros</title>
+  </head>
+  <body>
+      <script src="/js/addPagNoCache.js"></script>
+    <nav class="navbar navbar-default">
+      <div class="menu">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" title="Menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="">Controle Bezerras</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/index">Painel</a></li>
+            <li class="active"><a href="" style="color:#000 !important;">Bezerros</a></li>
+            <li><a href="/vaca/listavacas">Vacas</a></li>
+            <li><a href="/touro/listatouros">Touros</a></li>
+            <li><a href="/manejo/listamanejo">Manejo</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="alterarSenha">Alterar senha</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="sair">Sair</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+                <div class="row">
+              <div class="col-xs-12">
+          <div id="primeiralinha"></div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-6">
+          <blockquote>
+            <h1>Bezerros </h1>
+          </blockquote>
+        </div>
+        <div class="col-sm-6 text-right">
+          <h5>Última atualização dia <span th:text="${dataEHoraAtual}"></span> horas</h5>
+        </div>
+      </div>
+      <div class="pagina">
+        <div class="row">
+          <div class="col-sm-5">
+            <a href="adicionarbezerro" class="btn btn-md btn-primary" title="Adicionar Bezerro"><span class="glyphicon glyphicon-plus"></span> Adicionar um novo bezerro(a)</a>
+          </div>
+          <div class="col-sm-offset-2 col-sm-5 col-md-offset-3 col-md-4 text-right">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fas fa-search"></i></span>
+              <input type="text" name="filtro" id="filtrar-tabela" title="Campo de busca" class="form-control" placeholder="Busque pelo número ou nome do bezerro">
+            </div>
+          </div>
+        </div>
+        <br>
+        <div id="listaDeBezerros">
+          <div class="table-responsive">
+            <table class="table table-hover table-striped table-condensed table-bordered">
+              <thead>
+                <tr>
+                  <th class="text-center">Nº</th>
+                  <th>Nome</th>
+                  <th class="text-center">Data nascimento</th>
+                  <th class="text-center">Sexo</th>
+                  <th>Raça</th>
+                  <th>Nome da mãe</th>
+                  <th>Nome do pai</th>
+                  <th class="text-center">Status</th>
+                  <th>Observação</th>
+                  <th class="text-center">Opções</th>
+                </tr>
+              </thead>
+              <th:block th:each="bezerro : ${bezerros}">
+                <tr class="animal"  th:attr="id=${bezerro.id}">
+                  <td class="text-center info-numero"><span th:text="${bezerro.numero}"></span></td>
+                  <td class="info-nome"><span th:text="${bezerro.nome}"></span></td>
+                  <td class="text-center"><span th:text="${bezerro.dataNascimentoTexto}"></span></td>
+                  <td class="text-center"><span th:text="${bezerro.sexo}"></span></td>
+                  <td><span th:text="${bezerro.raca.descricao}"></span></td>
+                  <td><span th:text="${bezerro.vaca.numeroNome}"></span></td>
+                  <td><span th:text="${bezerro.touro.numeroNome}"></span></td>
+                  <td class="text-center"><span th:text="${bezerro.status.descricao}" class="label label-sm label-info"></span></td>
+                  <td><span th:text="${bezerro.observacao}"></span></td>
+                  <td class="text-center">
+                    <a th:href="@{/bezerro/perfil/{codigo}(codigo=${bezerro.id})}"  title="Ir para o perfil" class="btn-xs btn-info">
+                    <i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a th:href="@{/bezerro/excluir/{codigo}(codigo=${bezerro.id})}" title="Excluir" class="btn-xs btn-danger">
+                    <i class="fas fa-trash-alt"></i></a>
+                  </td>
+                </tr>
+              </th:block>
+            </table>
+            <div>Total de bezerros: <span th:text="${bezerros.size()}"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div th:insert="rodape :: copy"></div>
+    <script src="/js/jquery.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/filtroTabela.js"></script>
+    <script src="/js/alertOffline.js"></script>
+  </body>
+</html>

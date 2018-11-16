@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div th:fragment="copy">
+      <div id="modalListaAmamentados" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Lista Amamentados</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div id="listaDeBezerrosAmamentados">
+                  <div class="table-responsive">
+                    <table class="table table-hover table-striped table-condensed table-bordered">
+                      <thead>
+                        <tr>
+                          <th class="text-center">Nº</th>
+                          <th>Nome</th>
+                          <th class="text-center">Data nascimento</th>
+                          <th class="text-center">Sexo</th>
+                          <th>Nome da mãe</th>
+                          <th>Nome do pai</th>
+                          <th class="text-center">Peso</th>
+                          <th class="text-center">Altura</th>
+                          <th>Observação</th>
+                        </tr>
+                      </thead>
+                      <tr th:each="bezerro : ${listaAmamentados}">
+                        <td class="text-center"><span th:text="${bezerro.numero}"></span></td>
+                        <td><span th:text="${bezerro.nome}"></span></td>
+                        <td class="text-center"><span th:text="${bezerro.dataNascimentoTexto}"></span></td>
+                        <td class="text-center"><span th:text="${bezerro.sexo}"></span></td>
+                        <td><span th:text="${bezerro.vaca.nome}"></span></td>
+                        <td><span th:text="${bezerro.touro.nome}"></span></td>
+                        <td class="text-center"><span th:text="${bezerro.pesoInicial}"></span></td>
+                        <td class="text-center"><span th:text="${bezerro.alturaInicial}"></span></td>
+                        <td><span th:text="${bezerro.observacao}"></span></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,181 @@
+.botoes {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.alert{
+	padding-bottom: 5px !important;
+	padding-top: 5px !important;
+	color: #436073;
+}
+
+strong{
+	color: #436073;
+}
+.verde{
+	color: green;
+}
+
+.vermelho{
+	color: red;
+}
+
+.foto-bezerro {
+	max-height: 200px;
+	max-width: 200px;
+}
+
+.macho {
+	background-color: #B0C4DE;
+}
+
+.femea {
+	background-color: #FFB6C1;
+}
+
+.header {
+	border-bottom: solid 1px;
+	margin-bottom: 10px;
+}
+
+.table, form {
+	margin-bottom: 0px !important;
+}
+
+.dropdown {
+	border-left: 1px solid white !important;
+}
+
+.label{
+	font-size: 12px !important;
+}
+
+.invisivel {
+	display: none;
+}
+
+.a {
+	font-size: 18px;
+}
+
+body {
+	background-color: #FFFFFF !important;
+}
+
+.menu, .btn-primary, .footer, footer {
+	background-color: #436073 !important;
+}
+
+footer {
+	padding: 15px 0;
+	width: 100% !important;
+	margin-top: 60px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	color: #FFF !important;
+}
+
+.pagina {
+	min-height: 398px;
+}
+
+}
+.checkbox, .radio {
+	margin-top: 0px !important;
+}
+
+@media ( max-height : 1000px) {
+	footer {
+		position: relative !important;
+	}
+}
+
+.icones-footer {
+	color: #FFF !important;
+	margin-bottom: 10px;
+}
+
+ul li a:focus, ul li a:hover, .active, .table-responsive {
+	background-color: #D1DBBD!important;
+}
+
+@media ( max-width : 767px) {
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+		color: #436073 !important;
+	}
+}
+
+.panel, .table, .table-responsive {
+	background-color: #F2F2D4;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover,
+	.navbar-nav .open .dropdown-menu {
+	background-color: #F2F2D4 !important;
+}
+
+
+.table-hover tbody tr:hover td, table-hover tbody tr:hover th{
+	background-color: #91AA9D;
+}
+
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus,
+	.navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.open>a,
+	.navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover
+	{
+	background-color: #F2F2D4 !important;
+	color: #436073 !important;
+}
+
+.navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
+	color: #fff !important;
+}
+
+.navbar-default, ul .dropdown-menu, .modal-dialog, .modal-header,
+	.modal-footer {
+	background-color: #F2F2D4;
+	color: #436073;
+}
+
+h1, a, .navbar-default .navbar-brand, .navbar-default .navbar-brand,
+	.nav.navbar-nav.navbar-right li a, .nav.navbar-nav li a, .navbar-header a .navbar-brand,
+	dl dt, dl dd, .table-responsive {
+	color: #436073;
+}
+
+.menu ul li a:hover {
+	color: #436073 !important;
+}
+
+blockquote {
+	border-left: 5px solid #436073 !important;
+	margin-bottom: 20px !important;
+}
+
+hr {
+	border-color: #436073 !important;
+}
+
+.no-margin{
+	margin: 0px !important;
+}
+
+.botao-pequeno{
+	border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+tbody tr {
+	background-color: #FFF !important;
+}
+
+.modal-body {
+	background-color: #FFFFFF !important;
+	min-height: 120px;
+}
+
+.modal-header, .modal-footer{
+	background-color: #D1DBBD!important;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="Description" content="Controle Bezerras">
+    <meta http-equiv="Content-Language" content="pt-br">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#436073">
+    <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
+    <meta name="theme-color" content="#436073">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <title>Controle Bezerras</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="menu">
+        <div class="navbar-header">
+          <button type="button" title="Menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="">Controle Bezerras</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="" style="color:#000 !important;">Painel</a></li>
+            <li><a href="bezerro/listabezerros">Bezerros</a></li>
+            <li><a href="vaca/listavacas">Vacas</a></li>
+            <li><a href="touro/listatouros">Touros</a></li>
+            <li><a href="manejo/listamanejo">Manejo</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="alterarSenha">Alterar senha</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="sair">Sair</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+          <div class="panel" style="margin-top: 150px;">
+            <div class="panel-body no-padding">
+              <div class="text-center">
+                <i class="fas fa-robot fa-5x"></i>
+                <h1>Esta página não foi encontrada ou não existe.</h1>
+              </div>
+            </div>
+            <div class="clearfix">
+              <div class="panel-footer no-margin text-center">
+                <button type="button" class="btn btn-default" onclick="javascript:history.go(-1);">
+                <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+                <a href="/index" class="btn btn-primary">
+                  <i class="fas fa-tachometer-alt"></i> Painel
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pagina"></div>
+      <div class="row"></div>
+    </div>
+    <div th:insert="rodape :: copy"></div>
+    <script src="/js/jquery.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>

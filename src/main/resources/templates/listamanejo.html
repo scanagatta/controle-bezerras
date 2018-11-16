@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="Description" content="Controle Bezerras">
+    <meta http-equiv="Content-Language" content="pt-br">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#436073">
+    <meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png">
+    <meta name="theme-color" content="#436073">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <title>Lista de Bezerros</title>
+  </head>
+  <body>
+      <script src="/js/addPagNoCache.js"></script>
+    <nav class="navbar navbar-default">
+      <div class="menu">
+        <div class="navbar-header">
+          <button type="button" title="Menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="">Controle Bezerras</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/index">Painel</a></li>
+            <li><a href="/bezerro/listabezerros">Bezerros</a></li>
+            <li><a href="/vaca/listavacas">Vacas</a></li>
+            <li><a href="/touro/listatouros">Touros</a></li>
+            <li  class="active"><a href="" style="color:#000 !important;">Manejo</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="alterarSenha">Alterar senha</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="sair">Sair</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+          <div id="primeiralinha"></div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-6">
+          <blockquote>
+            <h1>Manejo </h1>
+          </blockquote>
+        </div>
+        <div class="col-sm-6 text-right">
+          <h5>Última atualização dia <span th:text="${dataEHoraAtual}"></span> horas</h5>
+        </div>
+      </div>
+      <div class="pagina">
+        <div class="row">
+          <form  th:action="@{/manejo/pesquisar}" method="GET" style="margin-bottom: 50px;">
+            <div class="col-sm-4 col-md-2">
+              <div class="input-group">
+                <span class="input-group-addon">  <button type="submit" class="botao-pequeno btn-success no-margin">Buscar</button>
+                  </span><input type="date" th:value="${data}" name="data" class="form-control" required="required"><span class="input-group-addon"> <i class="fa fa-calendar bigger-110"></i> </span>
+                </div>
+              </div>
+            </form>
+            <div class="col-sm-5 col-md-4 pull-right text-right">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fas fa-search"></i></span>
+                <input type="text" name="filtro" id="filtrar-tabela" title="Campo de busca" class="form-control" placeholder="Busque pelo número ou nome do bezerro">
+              </div>
+            </div>
+          </div>
+          <br>
+          <div id="listaDeDias">
+            <div>
+              <table class="table table-hover table-striped table-condensed table-bordered">
+ 
+                <th:block th:each="dia : ${dias}">
+
+                  <tr class="animal" th:attr="id=${dia.id}">
+                                      <td colspan="9999">
+                      <div class="panel" style="margin-bottom: 10px;">
+                        <div class="panel-body no-padding" style="padding-bottom: 0px;">
+                          <div class="col-xs-12 header no-margin-top">
+                            
+                            <div class="col-sm-4" style="padding-left: 0px;">
+                            <i class="fas fa-link" aria-hidden="true"></i>
+                            <a th:href="@{/bezerro/perfil/{codigo}(codigo=${dia.bezerro.id})}">
+                            <strong>
+                            Bezerro: 
+                            </strong>
+                            <span class="info-numero info-nome" th:text="${dia.bezerro.numeroNome}"></span>
+                            </a>
+                            
+                            </div>
+                            
+                            <div class="col-sm-4">
+                            <strong>
+                            <span th:text="${dia.numeroDia}"></span>º dia de vida
+                            </strong>
+                            </div>
+                            
+                                                        <div class="col-sm-4">
+                            <strong>
+                            Observação:
+                            </strong>
+                            <span th:text="${dia.bezerro.observacao}"></span>
+                            </div>
+
+                            
+                          </div>
+                          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <dl class="dl-horizontal">
+                            <dt>Colostro</dt>
+                            <dd><span th:text="${dia.colostro}"></span> L</dd>
+                            
+                                                        <dt>Suplemento Colostro</dt>
+                            <dd><span th:text="${dia.suplementoColostro}"></span> L</dd>
+                            </dl>
+                          </div>
+                          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <dl class="dl-horizontal">
+                                                        <dt>Leite</dt>
+                            <dd><span th:text="${dia.leite}"></span> L</dd>
+                            
+                                                        <dt>Ração</dt>
+                            <dd><span th:text="${dia.racao}"></span> g</dd>
+                              </dl>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                              <dl class="dl-horizontal">
+
+                                                        <dt>Feno</dt>
+                            <dd><div th:switch="${dia.feno}">
+    <span th:case="${false}"><i class="fas fa-times-circle vermelho"></i></span>
+    <span th:case="${true}"><i class="fas fa-check-circle verde"></i></span></div></dd>
+                            
+                                                        <dt>Vermifugação</dt>
+                                                        <dd><div th:switch="${dia.vermifugacao}">
+    <span th:case="${false}"><i class="fas fa-times-circle vermelho"></i></span>
+    <span th:case="${true}"><i class="fas fa-check-circle verde"></i></span></div></dd>
+
+                              </dl>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                              <dl class="dl-horizontal">
+
+                                                        <dt>Descorna</dt>
+                                                        <dd><div th:switch="${dia.descorna}">
+    <span th:case="${false}"><i class="fas fa-times-circle vermelho"></i></span>
+    <span th:case="${true}"><i class="fas fa-check-circle verde"></i></span></div></dd>
+
+
+                                                        <dt th:switch="${dia.numeroDia}">
+    <span th:case="${0}">Desinfecção do umbigo</span></dt>
+                                                        <dd><div th:switch="${dia.numeroDia}">
+    <span th:case="${0}"><i class="fas fa-check-circle verde"></i></span></div></dd>
+                              </dl>
+                            </div>
+                            
+                                  <div class="col-xs-12">  
+                                    <div class="row">                    
+                             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+           
+                                          <a style="text-decoration: none;" th:id="${dia.id}" onclick="excluir(this)" role="button" data-toggle="modal" data-target="#modalDiaBezerro" title="Completar Dados" class="btn btn-primary"> Completar Dados </a>
+                   
+                    </div>
+                            
+                                                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                              <div th:attr="class=${dia.id}">
+                              <dl class="dl-horizontal">
+                              
+
+                                                        <dt>Altura no dia</dt>
+                                                        <dd><span th:text="${dia.alturaNoDia}" class="alturaNoDia"></span></dd>
+
+
+                                                        <dt>Peso no dia</dt>
+                                                        <dd><span th:text="${dia.pesoNoDia}" class="pesoNoDia"></span></dd>
+
+                           
+ </dl>
+ </div> 
+                            </div>
+                            </div>
+</div>
+
+                          </div>
+                        </div>
+                      </td>
+ 
+                  </tr>
+                </th:block>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div th:insert="modalDiaBezerro :: copy"></div>
+      <div th:insert="rodape :: copy"></div>
+      <script src="/js/jquery.js"></script>
+      <script src="/bootstrap/js/bootstrap.min.js"></script>
+      <script src="/js/detalheTabela.js"></script>
+      <script src="/js/filtroTabela.js"></script>
+      <script src="/js/alertOffline.js"></script>
+          <script type="text/javascript" src="/js/jquery.mask.min.js"></script>
+           <script type="text/javascript" src="/js/formDiaBezerro.js"></script>
+              <script type="text/javascript">
+	        function excluir(elemento) {
+	        	var idelemento = elemento.id;
+	        	$('#formDiaBezerro #idDiaBezerro').val(idelemento);
+	        }
+        </script>
+              <script type="text/javascript">$("#peso").mask("00.000");</script>
+      <script type="text/javascript">$("#altura").mask("0.00");</script>
+    </body>
+    </body>
+  </html>

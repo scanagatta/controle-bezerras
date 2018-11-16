@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="Description" content="Controle Bezerras">
+    <meta http-equiv="Content-Language" content="pt-br">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#436073">
+    <meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png">
+    <meta name="theme-color" content="#436073">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <title>Lista de Touros</title>
+  </head>
+  <body>
+      <script src="/js/addPagNoCache.js"></script>
+    <nav class="navbar navbar-default">
+      <div class="menu">
+        <div class="navbar-header">
+          <button type="button" title="Menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="">Controle Bezerras</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/index">Painel</a></li>
+            <li><a href="/bezerro/listabezerros">Bezerros</a></li>
+            <li><a href="/vaca/listavacas">Vacas</a></li>
+            <li class="active"><a href="listatouros" style="color:#000 !important;">Touros</a></li>
+            <li><a href="/manejo/listamanejo">Manejo</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="alterarSenha">Alterar senha</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="sair">Sair</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+          <div id="primeiralinha"></div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-6">
+          <blockquote>
+            <h1>Touros </h1>
+          </blockquote>
+        </div>
+        <div class="col-sm-6 text-right">
+          <h5>Última atualização dia <span th:text="${dataEHoraAtual}"></span> horas</h5>
+        </div>
+      </div>
+      <div class="pagina">
+        <div class="row">
+          <div class="col-sm-offset-7 col-sm-5 col-md-offset-8 col-md-4 text-right">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fas fa-search"></i></span>
+              <input type="text" name="filtro" id="filtrar-tabela" class="form-control" title="Campo de busca" placeholder="Busque pelo número ou nome do touro">
+            </div>
+          </div>
+        </div>
+        <br>
+        <div id="listaDeTouros">
+          <div class="table-responsive">
+            <table class="table table-hover table-condensed table-bordered">
+              <thead>
+                <tr>
+                  <th class="text-center col-xs-1">Filhos</th>
+                  <th class="text-center">Nº</th>
+                  <th>Nome</th>
+                  <th>Raça</th>
+                  <th class="text-center">Qtd filhos</th>
+                  <th class="text-center">Status</th>
+                  <th class="text-center">Opções</th>
+                </tr>
+              </thead>
+              <th:block th:each="touro : ${touros}">
+                <tr class="animal" th:attr="id=${touro.id}">
+                  <td class="text-center" onclick="exibeFilhos(this)">
+                    <a title="Ver filhos">
+                      <i class="ace-icon fa fa-angle-double-down"></i>
+                      <span class="sr-only">Filhos</span>
+                    </a>
+                  </td>
+                  <td class="text-center info-numero"><span th:text="${touro.numero}"></span></td>
+                  <td class="info-nome"><span th:text="${touro.nome}"></span></td>
+                  <td><span th:text="${touro.raca.descricao}"></span></td>
+                  <td class="text-center"><span th:text="${touro.bezerros.size()}"></span></td>
+                  <td class="text-center"><span th:text="${touro.status.descricao}" class="label label-sm label-info"></span></td>
+                  <td class="text-center">
+                    <a th:href="@{/touro/editar/{codigo}(codigo=${touro.id})}"  title="Editar" class="btn-xs btn-info">
+                    <i class="fa fa-edit"></i></a>
+                    <a style="text-decoration: none;" th:id="${touro.id}" onclick="excluir(this)" role="button" data-toggle="modal" data-target="#modalExcluirTouro" title="Excluir" class="btn-xs btn-danger">
+                    <i class="fas fa-trash-alt"></i></a>
+                  </td>
+                </tr>
+                <tr th:each="bezerro : ${touro.bezerros}" th:attr="class=${touro.id}" style="display: none;">
+                  <td colspan="9999">
+                    <div class="panel">
+                      <div class="panel-body no-padding" style="padding-bottom: 0px;">
+                        <div class="col-xs-12 header no-margin-top">
+                          
+                         <i class="fas fa-link" aria-hidden="true"></i>
+                          <strong>
+                          <a th:href="@{/bezerro/perfil/{codigo}(codigo=${bezerro.id})}">
+                            Dados do bezerro
+                          </a>
+                          </strong>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+                          <dl class="dl-horizontal">
+                            <dt>Número</dt>
+                            <dd>
+                            <span th:text="${bezerro.numero}"></span>
+                            </dd>
+                            <dt>Nome</dt>
+                            <dd><span th:text="${bezerro.nome}"></span></dd>
+                          </dl>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                          <dl class="dl-horizontal">
+                            <dt>sexo</dt>
+                            <dd><span th:text="${bezerro.sexo}"></span></dd>
+                            <dt>mae</dt>
+                            <dd><a th:href="@{/vaca/editar/{codigo}(codigo=${bezerro.vaca.id})}"  title="Ir para o cadastro">
+                              <span th:text="${bezerro.vaca.numeroNome}"></span></a></dd>
+                            </dl>
+                          </div>
+                          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <dl class="dl-horizontal">
+                              <dt>Status</dt>
+                              <dd><span th:text="${bezerro.status.descricao}"></span></dd>
+                              <dt>Raça</dt>
+                              <dd><span th:text="${bezerro.raca.descricao}"></span></dd>
+                            </dl>
+                          </div>
+                          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                            <dl class="dl-horizontal">
+                              <dt>Data Nascimento</dt>
+                              <dd><span th:text="${bezerro.dataNascimentoTexto}"></span></dd>
+                              <dt>Observação</dt>
+                              <dd><span th:text="${bezerro.observacao}"></span></dd>
+                            </dl>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </th:block>
+              </table>
+              <div>Total de touros: <span th:text="${touros.size()}"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div th:insert="modalExcluirTouro :: copy"></div>
+      <div th:insert="rodape :: copy"></div>
+      <script src="/js/jquery.js"></script>
+      <script src="/bootstrap/js/bootstrap.min.js"></script>
+      <script src="/js/detalheTabela.js"></script>
+      <script src="/js/filtroTabela.js"></script>
+      <script type="text/javascript">
+      
+	      function excluir(elemento) {
+	     	 var idelemento = elemento.id;
+	     	 $('#formTouro input').val(idelemento);
+	      }
+      </script>
+      
+      <script src="/js/alertOffline.js"></script>
+    </body>
+  </html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+		<div th:fragment="copy">
+			<div id="modalDiaBezerro" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+							</button>
+							<h4 class="modal-title">Dados Físicos</h4>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="alert alert-success alert-dismissible" role="alert" id="msg-sucesso"
+										style="display:none;">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+										aria-hidden="true">×</span></button>
+										<strong>Os dados foram atualizados</strong>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<form id="formDiaBezerro" th:action="@{/manejo/salvar}" method="post" style="margin-bottom: 50px;">
+									<input type="hidden" class="form-control" id="idDiaBezerro" name="id" />
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label for="peso">Peso</label> <input type="text" class="form-control" id="peso" name= "pesoNoDia"/>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label for="altura">Altura</label> <input type="text" class="form-control" id="altura" name="alturaNoDia" />
+										</div>
+									</div>
+									<div class="col-xs-12">
+										<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Cadastrar</button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

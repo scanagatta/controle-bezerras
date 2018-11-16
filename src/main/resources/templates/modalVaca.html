@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div th:fragment="copy">
+      <div id="modalVaca" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Adicionar vaca</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="alert alert-success alert-dismissible" role="alert" id="msg-sucesso"
+                    style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+                    <strong>A vaca foi cadastrada com sucesso!</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <form id="formVaca" th:action="@{/vaca/salvar}" method="post" style="margin-bottom: 50px;">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="numero">Numero</label> <input type="number" class="form-control" name= "numero" required="required"/>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="nome">Nome</label> <input type="text" class="form-control" name="nome" required="required"/>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="dataNascimento">Data de Nascimento</label> <input type="date" class="form-control" name="dataNascimento"/>
+                    </div>
+                  </div>
+
+									             <div class="col-sm-6">
+              <div class="form-group">
+                <label for="raca">Raça</label>
+                <select class="form-control input" id="raca" name="raca">
+                  <option th:each="raca : ${raca}"
+                    th:value="${raca}"
+                    th:utext="${raca.descricao}"/>
+                  </select>
+                </div>
+              </div>
+
+                  <div class="col-xs-12">
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Cadastrar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

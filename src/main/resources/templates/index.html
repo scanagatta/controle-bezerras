@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+  <head>
+   	<script src="js/registraSw.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="Description" content="Controle Bezerras">
+    <meta http-equiv="Content-Language" content="pt-br">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#436073">
+    <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
+    <meta name="theme-color" content="#436073">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+   	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <title>Controle Bezerras</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="menu">
+        <div class="navbar-header">
+          <button type="button" title="Menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="">Controle Bezerras</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="" style="color:#000 !important;">Painel</a></li>
+            <li><a href="bezerro/listabezerros">Bezerros</a></li>
+            <li><a href="vaca/listavacas">Vacas</a></li>
+            <li><a href="touro/listatouros">Touros</a></li>
+            <li><a href="manejo/listamanejo">Manejo</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="alterarSenha">Alterar senha</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="sair">Sair</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="primeiralinha"></div>
+        </div>
+        <div class="col-sm-6">
+          <blockquote>
+            <h1>Painel </h1>
+          </blockquote>
+        </div>
+        <div class="col-sm-6 text-right">
+          <h4>Última atualização dia <span th:text="${dataEHoraAtual}"></span> horas</h4>
+        </div>
+      </div>
+      <div class="pagina">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="panel col-xs-12">
+              <div class="panel-body bg-light">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <h3>Total de bezerros<br></h3>
+                  </div>
+                  <div class="col-xs-6 text-center">
+                    <h1><b><span th:text="${qtdBezerros}"></span></b></h1>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <h4 class="text-center"><span>Machos<br><span th:text="${qtdMachos}"></span></span></h4>
+                  </div>
+                  <div class="col-xs-6">
+                    <h4 class="text-center"><span>Fêmeas<br><span th:text="${qtdFemeas}"></span></span></h4>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <a style="text-decoration: none;" role="button" data-toggle="modal" data-target="#modalListaDesmamados">
+                      <h4 class="text-center"><span>Desmamados<br><span th:text="${qtdDesmamados}"></span></span></h4>
+                      <p class="text-center">« ver detalhes »</p></a>
+                    </div>
+                    <div class="col-sm-6">
+                      <a style="text-decoration: none;" role="button"  data-toggle="modal" data-target="#modalListaAmamentados">
+                        <h4 class="text-center"><span>Em amamentação<br><span th:text="${qtdAmamentados}"></span></span></h4>
+                        <p class="text-center">« ver detalhes »</p></a>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <h4 class="text-center"><span>Doados<br><span th:text="${qtdDoados}"></span></span></h4>
+                      </div>
+                      <div class="col-sm-4">
+                        <h4 class="text-center"><span>Vendidos<br><span th:text="${qtdVendidos}"></span></span></h4>
+                      </div>
+                      <div class="col-sm-4">
+                        <h4 class="text-center"><span>Mortos<br><span th:text="${qtdMortos}"></span></span></h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="panel col-xs-12">
+                  <div class="panel-body bg-light">
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <h3>Total de Vacas<br></h3>
+                      </div>
+                      <div class="col-xs-6 text-center">
+                        <h1><b><span th:text="${qtdVacas}"></span></b></h1>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-3">
+                        <h4 class="text-center"><span>Ativas<br><span th:text="${qtdVacasAtivas}"></span></span></h4>
+                      </div>
+                      <div class="col-xs-6 col-sm-3">
+                        <h4 class="text-center"><span>Vendidas<br><span th:text="${qtdVacasVendidas}"></span></span></h4>
+                      </div>
+                      <div class="col-xs-6 col-sm-3">
+                        <h4 class="text-center"><span>Inativas<br><span th:text="${qtdVacasInativas}"></span></span></h4>
+                      </div>
+                      <div class="col-xs-6 col-sm-3">
+                        <h4 class="text-center"><span>Mortas<br><span th:text="${qtdVacasMortas}"></span></span></h4>
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="panel col-xs-12">
+                  <div class="panel-body bg-light">
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <h3>Total de Touros<br></h3>
+                      </div>
+                      <div class="col-xs-6 text-center">
+                        <h1><b><span th:text="${qtdTouros}"></span></b></h1>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-3">
+                        <h4 class="text-center"><span>Ativos<br><span th:text="${qtdTourosAtivos}"></span></span></h4>
+                      </div>
+                      <div class="col-xs-6 col-sm-3">
+                        <h4 class="text-center"><span>Vendidos<br><span th:text="${qtdTourosVendidos}"></span></span></h4>
+                      </div>
+                      <div class="col-xs-6 col-sm-3">
+                        <h4 class="text-center"><span>Inativos<br><span th:text="${qtdTourosInativos}"></span></span></h4>
+                      </div>
+                      <div class="col-xs-6 col-sm-3">
+                        <h4 class="text-center"><span>Mortos<br><span th:text="${qtdTourosMortos}"></span></span></h4>
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div th:insert="rodape :: copy"></div>
+        <div th:insert="modalListaDesmamados :: copy"></div>
+        <div th:insert="modalListaAmamentados :: copy"></div>
+        <script src="js/jquery.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+              <script src="/js/addPagNoCache.js"></script>
+        <script src="js/alertOffline.js"></script>
+      </body>
+    </html>
