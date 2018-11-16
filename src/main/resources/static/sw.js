@@ -1,7 +1,7 @@
 let arquivos = [
 	"/",
-	"/index.html",
-	"/offline.html",
+	"/index",
+//	"/offline.html",
 //	"/bezerro/listabezerros",
 //	"/touro/listatouros",
 //	"/vaca/listavacas",
