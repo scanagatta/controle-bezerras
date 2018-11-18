@@ -152,7 +152,9 @@
                 <div class="col-sm-5" style="padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="form-group">
                     <label for="peso">Peso</label> <input type="text" id="peso" class="form-control" th:field="*{pesoInicial}" placeholder="EX: 45.00 ou 52.700" />
+                    
                     <input th:if="*{ultimaPesagem} != null" type="hidden" id="ultimaPesagem" class="form-control" th:field="*{ultimaPesagem}"/>
+                  <input th:if="*{dataUltimaPesagem} != null" type="hidden" id="dataUltimaPesagem" class="form-control" th:field="*{dataUltimaPesagem}"/>
                   </div>
                 </div>
                 <div class="col-sm-2">
@@ -160,6 +162,9 @@
                 <div class="col-sm-5" style="padding-left: 0px !important; padding-right: 0px !important;">
                   <div class="form-group">
                     <label for="altura">Altura</label> <input type="text" id="altura" class="form-control" th:field="*{alturaInicial}" placeholder="EX: 0.70 ou 0.84" />
+                  <input th:if="*{ultimaMedida} != null" type="hidden" id="ultimaMedida" class="form-control" th:field="*{ultimaMedida}"/>
+                  <input th:if="*{dataUltimaMedida} != null" type="hidden" id="dataUltimaMedida" class="form-control" th:field="*{dataUltimaMedida}"/>
+                 
                   </div>
                 </div>
               </div>
