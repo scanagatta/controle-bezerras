@@ -175,5 +175,10 @@ public class BezerroService {
 	public void updateAltura(Bezerro bezerro) {
 		repository.updateAltura(bezerro.getId(), bezerro.getUltimaMedida(), bezerro.getDataUltimaMedida());
 	}
+	
+	public Bezerro get(Long id) {
+		Bezerro bezerro = repository.get(id);
+		return bezerro;
+	}
 
 }

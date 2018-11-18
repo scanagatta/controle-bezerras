@@ -17,9 +17,12 @@ $("#formDiaBezerro").submit(function(e) {
 			
 			var idTr = document.getElementById(dataId);
 			
-			idTr.getElementsByClassName('pesoNoDia')[0].innerHTML = data["pesoNoDia"];
-			idTr.getElementsByClassName('alturaNoDia')[0].innerHTML = data["alturaNoDia"];
-
+			if(data["pesoNoDia"] != null){
+				idTr.getElementsByClassName('pesoNoDia')[0].innerHTML = data["pesoNoDia"];
+			}
+			if(data["alturaNoDia"] != null){
+				idTr.getElementsByClassName('alturaNoDia')[0].innerHTML = data["alturaNoDia"];
+			}
             //mensagem de alerta é exibida por 3 segundos e se fecha sozinha
 			$('#msg-sucesso').show();
 			setTimeout(function(){

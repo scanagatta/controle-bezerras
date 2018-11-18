@@ -184,8 +184,10 @@
                                     <div class="row">                    
                              <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
            
-                                          <a style="text-decoration: none;" th:id="${dia.id}" onclick="excluir(this)" role="button" data-toggle="modal" data-target="#modalDiaBezerro" title="Completar Dados" class="btn btn-primary"> Completar Dados </a>
-                   
+                                          <a style="text-decoration: none;" th:id="${dia.id}" onclick="passarIdDia(this)" role="button" data-toggle="modal" data-target="#modalDiaBezerro" title="Completar Dados" class="btn btn-primary"> Completar Dados 
+                   							<input type="hidden" class="form-control" th:id="${dia.bezerro.id}" />
+                    						<input type="hidden" class="dataDia form-control" th:id="${dia.dataDoDia}" /></a>
+                    
                     </div>
                             
                                                         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
@@ -228,10 +230,17 @@
           <script type="text/javascript" src="/js/jquery.mask.min.js"></script>
            <script type="text/javascript" src="/js/formDiaBezerro.js"></script>
               <script type="text/javascript">
-	        function excluir(elemento) {
+  	        function passarIdDia(elemento) {
 	        	var idelemento = elemento.id;
 	        	$('#formDiaBezerro #idDiaBezerro').val(idelemento);
+	        	
+	        	var idBezerro = elemento.childNodes[1].id;
+	        	$('#formDiaBezerro #idBezerro').val(idBezerro);
+	        	
+	        	var dataDoDia = elemento.getElementsByClassName("dataDia")[0].id;
+	        	$('#formDiaBezerro #dataDoDia').val(dataDoDia);
 	        }
+
         </script>
               <script type="text/javascript">$("#peso").mask("00.000");</script>
       <script type="text/javascript">$("#altura").mask("0.00");</script>

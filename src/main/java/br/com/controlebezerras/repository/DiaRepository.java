@@ -21,7 +21,12 @@ public interface DiaRepository extends CrudRepository<Dia, Long> {
 
 	@Transactional
 	@Modifying
-	@Query("update dia set peso_no_dia = ?2, altura_no_dia = ?3 where id = ?1")
-	void update(Long id, Double pesoNoDia, Double alturaNoDia);
+	@Query("update dia set peso_no_dia = ?2 where id = ?1")
+	void updatePeso(Long id, Double pesoNoDia);
+	
+	@Transactional
+	@Modifying
+	@Query("update dia set altura_no_dia = ?2 where id = ?1")
+	void updateAltura(Long id, Double alturaNoDia);
 
 }

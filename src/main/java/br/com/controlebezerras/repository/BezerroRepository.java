@@ -63,4 +63,7 @@ public interface BezerroRepository extends CrudRepository<Bezerro, Long> {
 	@Modifying
 	@Query("update bezerro set ultima_medida = ?2, data_ultima_medida = ?3 where id = ?1")
 	void updateAltura(Long id, Double ultimaMedida, LocalDate dataUltimaMedida);
+
+	@Query("select b from bezerro b where id = ?1")
+	Bezerro get(Long id);
 }

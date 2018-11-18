@@ -34,8 +34,12 @@ public class DiaService {
 		}
 	}
 
-	public void update(Dia dia) {
-		repository.update(dia.getId(), dia.getPesoNoDia(), dia.getAlturaNoDia());
+	public void updatePeso(Dia dia) {
+		repository.updatePeso(dia.getId(), dia.getPesoNoDia());
+	}
+	
+	public void updateAltura(Dia dia) {
+		repository.updateAltura(dia.getId(), dia.getAlturaNoDia());
 	}
 
 }

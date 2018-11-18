@@ -44,21 +44,21 @@ public class ManejoController {
 	@ResponseBody
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public Dia salvar(Dia dia, BindingResult result, Model model) {
-		diaService.update(dia);
 
-		Bezerro bezerro = dia.getBezerro();
-		bezerro = bezerroService.findId(bezerro.getId());
+		Bezerro bezerro = bezerroService.get(dia.getBezerro().getId());
 
 		if (dia.getPesoNoDia() != null) {
 			bezerro.setDataUltimaPesagem(dia.getDataDoDia());
 			bezerro.setUltimaPesagem(dia.getPesoNoDia());
-			bezerroService.updatePeso(bezerro);
+			diaService.updatePeso(dia);
+			bezerroService.salvar(bezerro);
 		}
 
 		if (dia.getAlturaNoDia() != null) {
 			bezerro.setDataUltimaMedida(dia.getDataDoDia());
 			bezerro.setUltimaMedida(dia.getAlturaNoDia());
-			bezerroService.updateAltura(bezerro);
+			diaService.updateAltura(dia);
+			bezerroService.salvar(bezerro);
 		}
 
 		return dia;
