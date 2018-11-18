@@ -65,14 +65,14 @@ public class ManejoController {
 	}
 
 	@RequestMapping(value = "/pesquisar", method = RequestMethod.POST)
-	public String pesquisar(LocalDate data) {
+	public String pesquisar(String data) {
 
 		return "redirect:listamanejo/" + data;
 
 	}
 
 	@RequestMapping("/listamanejo/{data}")
-	public ModelAndView perfil(@PathVariable("data") LocalDate data) {
+	public ModelAndView perfil(@PathVariable("data") String data) {
 		ModelAndView mv = new ModelAndView("listamanejo");
 		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();
 		mv.addObject("dataEHoraAtual", dataEHoraAtual);
