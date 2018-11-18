@@ -79,7 +79,7 @@ public class ManejoController {
 		mv.addObject("dataEHoraAtual", dataEHoraAtual);
 		mv.addObject("data", data);
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate date = LocalDate.parse(data,formatter);
 		Iterable<Dia> dias = diaService.listaPorData(date);
 		
