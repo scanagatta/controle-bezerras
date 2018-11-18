@@ -111,33 +111,58 @@ public class Bezerro implements Comparable<Bezerro> {
 
 	public void constroiDias(Bezerro id) {
 
-		dias.add(new Dia(0, dataNascimento, 0.0d, 0.0d, 6, 0, 0, 0, false, false, false, id));
-		dias.add(new Dia(1, dataNascimento.plusDays(1), 0.0d, 0.0d, 0, 4, 0, 0, false, false, false, id));
-		dias.add(new Dia(2, dataNascimento.plusDays(2), 0.0d, 0.0d, 0, 4, 0, 0, false, false, false, id));
-		dias.add(new Dia(3, dataNascimento.plusDays(3), 0.0d, 0.0d, 0, 4, 0, 0, false, false, false, id));
+		dias.add(new Dia(1, dataNascimento, 0.0d, 0.0d, 6, 0, 0, 0, false, false, false, id));
+		dias.add(new Dia(2, dataNascimento.plusDays(1), 0.0d, 0.0d, 0, 4, 0, 0, false, false, false, id));
+		dias.add(new Dia(3, dataNascimento.plusDays(2), 0.0d, 0.0d, 0, 4, 0, 0, false, false, false, id));
 		int racao = 500;
 		for (int i = 4; i <= 60; i++) {
+			int d = i - 1;
 			if (i < 10) {
-				dias.add(new Dia(i, dataNascimento.plusDays(i), 0.0d, 0.0d, 0, 0, 8, 100, false, false, false, id));
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 8, 100, false, false, false, id));
 			} else if (i < 16) {
-				dias.add(new Dia(i, dataNascimento.plusDays(i), 0.0d, 0.0d, 0, 0, 8, 100, false, true, false, id));
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 8, 100, false, true, false, id));
 			} else if (i < 22) {
-				dias.add(new Dia(i, dataNascimento.plusDays(i), 0.0d, 0.0d, 0, 0, 8, 150, false, true, false, id));
-			} else if (i < 30) {
-				dias.add(new Dia(i, dataNascimento.plusDays(i), 0.0d, 0.0d, 0, 0, 8, 200, false, true, false, id));
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 8, 150, false, true, false, id));
+			} else if (i < 29) {
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 8, 200, false, true, false, id));
+			} else if (i == 29) {
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 8, 300, false, true, false, id));
 			} else if (i == 30) {
-				dias.add(new Dia(i, dataNascimento.plusDays(i), 0.0d, 0.0d, 0, 0, 8, 300, false, true, false, id));
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 8, 300, true, true, false, id));
 			} else if (i > 30 && i < 35) {
-				dias.add(new Dia(i, dataNascimento.plusDays(i), 0.0d, 0.0d, 0, 0, 8, 300, true, true, false, id));
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 8, 300, false, true, false, id));
 			} else if (i == 35) {
-				dias.add(new Dia(i, dataNascimento.plusDays(i), 0.0d, 0.0d, 0, 0, 8, 450, false, true, false, id));
-			} else if (i > 35 && i < 60) {
-				dias.add(new Dia(i, dataNascimento.plusDays(i), 0.0d, 0.0d, 0, 0, 8, racao, false, true, false, id));
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 8, 450, false, true, false, id));
+			} else if (i > 35 && i < 41) {
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 7, racao, false, true, false, id));
 				racao = racao + 100;
-			} else if (i > 59 && i < 61) {
-				dias.add(new Dia(i, dataNascimento.plusDays(i), 0.0d, 0.0d, 0, 0, 8, racao, true, true, false, id));
-
+			} else if (i > 40 && i < 45) {
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 6, racao, false, true, false, id));
+				racao = racao + 100;
+			} else if (i == 45) {
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 6, racao + 100, false, true, false,
+						id));
+				racao = racao + 100;
+			} else if (i > 45 && i < 51) {
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 5, racao, false, true, false, id));
+				racao = racao + 100;
+			} else if (i > 50 && i < 54) {
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 4, racao, false, true, false, id));
+				racao = racao + 100;
+			} else if (i > 53 && i < 57) {
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 3, racao, false, true, false, id));
+				racao = racao + 100;
+			} else if (i == 57 || i == 58) {
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 2, racao - 100, false, true, false,
+						id));
+			} else if (i == 59) {
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 1, racao - 100, false, true, false,
+						id));
+			} else if (i == 60) {
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 1, racao - 100, true, true, false,
+						id));
 			}
+
 		}
 	}
 
