@@ -40,7 +40,7 @@ public class BezerroService {
 		repository.deleteById(id);
 
 	}
-	
+
 	public void deleteDias(Long id) {
 		repository.deleteDias(id);
 
@@ -166,6 +166,14 @@ public class BezerroService {
 		} catch (NoResultException e) {
 			return new ArrayList<>();
 		}
+	}
+
+	public void updatePeso(Bezerro bezerro) {
+		repository.updatePeso(bezerro.getId(), bezerro.getUltimaPesagem(), bezerro.getDataUltimaPesagem());
+	}
+
+	public void updateAltura(Bezerro bezerro) {
+		repository.updateAltura(bezerro.getId(), bezerro.getUltimaMedida(), bezerro.getDataUltimaMedida());
 	}
 
 }

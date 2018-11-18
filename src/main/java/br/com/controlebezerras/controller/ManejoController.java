@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.controlebezerras.extras.FormatadorDataEHora;
+import br.com.controlebezerras.model.Bezerro;
 import br.com.controlebezerras.model.Dia;
+import br.com.controlebezerras.service.BezerroService;
 import br.com.controlebezerras.service.DiaService;
 
 @Controller
@@ -23,6 +25,9 @@ public class ManejoController {
 
 	@Autowired
 	private DiaService diaService;
+
+	@Autowired
+	private BezerroService bezerroService;
 
 	@RequestMapping("/listamanejo")
 	public String listamanejo(Model model) {
@@ -40,6 +45,20 @@ public class ManejoController {
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public Dia salvar(Dia dia, BindingResult result, Model model) {
 		diaService.update(dia);
+
+		Bezerro bezerro = dia.getBezerro();
+
+		if (dia.getPesoNoDia() != null) {
+			bezerro.setDataUltimaPesagem(dia.getDataDoDia());
+			bezerro.setUltimaPesagem(dia.getPesoNoDia());
+			bezerroService.updatePeso(bezerro);
+		}
+
+		if (dia.getAlturaNoDia() != null) {
+			bezerro.setDataUltimaMedida(dia.getDataDoDia());
+			bezerro.setUltimaMedida(dia.getAlturaNoDia());
+			bezerroService.updateAltura(bezerro);
+		}
 
 		return dia;
 

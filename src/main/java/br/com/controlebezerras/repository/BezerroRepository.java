@@ -49,8 +49,18 @@ public interface BezerroRepository extends CrudRepository<Bezerro, Long> {
 	@Query("select b from bezerro b where data_prevista_desmame <= ?1")
 	List<Bezerro> listaPorData(LocalDate data);
 
-	 @Transactional
-	 @Modifying
+	@Transactional
+	@Modifying
 	@Query("delete from dia where bezerro_id = ?1")
 	void deleteDias(Long id);
+
+	@Transactional
+	@Modifying
+	@Query("update bezerro set ultima_pesagem = ?2, data_ultima_pesagem = ?3 where id = ?1")
+	void updatePeso(Long id, Double ultimaPesagem, LocalDate dataUltimaPesagem);
+
+	@Transactional
+	@Modifying
+	@Query("update bezerro set ultima_medida = ?2, data_ultima_medida = ?3 where id = ?1")
+	void updateAltura(Long id, Double ultimaMedida, LocalDate dataUltimaMedida);
 }

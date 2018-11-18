@@ -57,6 +57,12 @@ public class Bezerro implements Comparable<Bezerro> {
 	private Double pesoPrevistoFinal;
 	private Double ganhoPesoDia;
 
+	private LocalDate dataUltimaPesagem;
+	private Double ultimaPesagem;
+
+	private LocalDate dataUltimaMedida;
+	private Double ultimaMedida;
+
 	private Double pesoFinal;
 	private Double alturaFinal;
 
@@ -66,9 +72,10 @@ public class Bezerro implements Comparable<Bezerro> {
 		dataNascimento = LocalDate.now();
 	}
 
-	public Bezerro(Long id, String numero, String nome, LocalDate dataNascimento, String sexo, Raca raca, Vaca vaca,
-			Touro touro, Status status, Double pesoInicial, Double alturaInicial, String observacao, List<Dia> dias,
-			LocalDate dataPrevistaDesmame, Double pesoPrevistoFinal, Double ganhoPesoDia, Double pesoFinal,
+	public Bezerro(Long id, String numero, String nome, LocalDate dataNascimento, String sexo, Vaca vaca, Touro touro,
+			Status status, Raca raca, Double pesoInicial, Double alturaInicial, String observacao, List<Dia> dias,
+			LocalDate dataPrevistaDesmame, Double pesoPrevistoFinal, Double ganhoPesoDia, LocalDate dataUltimaPesagem,
+			Double ultimaPesagem, LocalDate dataUltimaMedida, Double ultimaMedida, Double pesoFinal,
 			Double alturaFinal) {
 		super();
 		this.id = id;
@@ -76,10 +83,10 @@ public class Bezerro implements Comparable<Bezerro> {
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 		this.sexo = sexo;
-		this.raca = raca;
 		this.vaca = vaca;
 		this.touro = touro;
 		this.status = status;
+		this.raca = raca;
 		this.pesoInicial = pesoInicial;
 		this.alturaInicial = alturaInicial;
 		this.observacao = observacao;
@@ -87,6 +94,10 @@ public class Bezerro implements Comparable<Bezerro> {
 		this.dataPrevistaDesmame = dataPrevistaDesmame;
 		this.pesoPrevistoFinal = pesoPrevistoFinal;
 		this.ganhoPesoDia = ganhoPesoDia;
+		this.dataUltimaPesagem = dataUltimaPesagem;
+		this.ultimaPesagem = ultimaPesagem;
+		this.dataUltimaMedida = dataUltimaMedida;
+		this.ultimaMedida = ultimaMedida;
 		this.pesoFinal = pesoFinal;
 		this.alturaFinal = alturaFinal;
 	}
@@ -379,6 +390,38 @@ public class Bezerro implements Comparable<Bezerro> {
 		} else {
 			return numero;
 		}
+	}
+
+	public LocalDate getDataUltimaPesagem() {
+		return dataUltimaPesagem;
+	}
+
+	public void setDataUltimaPesagem(LocalDate dataUltimaPesagem) {
+		this.dataUltimaPesagem = dataUltimaPesagem;
+	}
+
+	public Double getUltimaPesagem() {
+		return ultimaPesagem;
+	}
+
+	public void setUltimaPesagem(Double ultimaPesagem) {
+		this.ultimaPesagem = ultimaPesagem;
+	}
+
+	public LocalDate getDataUltimaMedida() {
+		return dataUltimaMedida;
+	}
+
+	public void setDataUltimaMedida(LocalDate dataUltimaMedida) {
+		this.dataUltimaMedida = dataUltimaMedida;
+	}
+
+	public Double getUltimaMedida() {
+		return ultimaMedida;
+	}
+
+	public void setUltimaMedida(Double ultimaMedida) {
+		this.ultimaMedida = ultimaMedida;
 	}
 
 }

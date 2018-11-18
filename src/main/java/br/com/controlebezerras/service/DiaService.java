@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.controlebezerras.model.Dia;
-import br.com.controlebezerras.model.Vaca;
 import br.com.controlebezerras.repository.DiaRepository;
 
 @Service
@@ -26,7 +25,7 @@ public class DiaService {
 			return new ArrayList<>();
 		}
 	}
-	
+
 	public List<Dia> listaPorData(LocalDate string) {
 		try {
 			return repository.listaPorData(string);
@@ -34,7 +33,7 @@ public class DiaService {
 			return new ArrayList<>();
 		}
 	}
-	
+
 	public void update(Dia dia) {
 		repository.update(dia.getId(), dia.getPesoNoDia(), dia.getAlturaNoDia());
 	}
