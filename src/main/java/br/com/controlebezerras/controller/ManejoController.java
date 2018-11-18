@@ -30,8 +30,8 @@ public class ManejoController {
 
 	@RequestMapping("/listamanejo")
 	public String listamanejo(Model model) {
-		model.addAttribute("data", LocalDate.now().toString());
-		Iterable<Dia> dias = diaService.listaPorData(LocalDate.now().toString());
+		model.addAttribute("data", LocalDate.now());
+		Iterable<Dia> dias = diaService.listaPorData(LocalDate.now());
 
 		model.addAttribute("dias", dias);
 		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();
@@ -65,14 +65,14 @@ public class ManejoController {
 	}
 
 	@RequestMapping(value = "/pesquisar", method = RequestMethod.POST)
-	public String pesquisar(String data) {
+	public String pesquisar(LocalDate data) {
 
 		return "redirect:listamanejo/" + data;
 
 	}
 
 	@RequestMapping("/listamanejo/{data}")
-	public ModelAndView perfil(@PathVariable("data") String data) {
+	public ModelAndView perfil(@PathVariable("data") LocalDate data) {
 		ModelAndView mv = new ModelAndView("listamanejo");
 		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();
 		mv.addObject("dataEHoraAtual", dataEHoraAtual);
