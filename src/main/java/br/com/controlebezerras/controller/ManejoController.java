@@ -47,6 +47,7 @@ public class ManejoController {
 		diaService.update(dia);
 
 		Bezerro bezerro = dia.getBezerro();
+		bezerro = bezerroService.findId(bezerro.getId());
 
 		if (dia.getPesoNoDia() != null) {
 			bezerro.setDataUltimaPesagem(dia.getDataDoDia());
