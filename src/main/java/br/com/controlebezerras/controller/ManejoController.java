@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.controlebezerras.extras.FormatadorDataEHora;
 import br.com.controlebezerras.model.Bezerro;
@@ -20,19 +22,16 @@ import br.com.controlebezerras.service.DiaService;
 @RequestMapping("/manejo")
 public class ManejoController {
 
-//	@Autowired
-//	private BezerroService bezerroService;
+	@Autowired
+	private BezerroService bezerroService;
 
 	@Autowired
 	private DiaService diaService;
 
-	@Autowired
-	private BezerroService bezerroService;
-
 	@RequestMapping("/listamanejo")
 	public String listamanejo(Model model) {
-		model.addAttribute("data", LocalDate.now());
-		Iterable<Dia> dias = diaService.listaPorData(LocalDate.now());
+		model.addAttribute("data", LocalDate.now().toString());
+		Iterable<Dia> dias = diaService.listaPorData(LocalDate.now().toString());
 
 		model.addAttribute("dias", dias);
 		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();
@@ -65,49 +64,22 @@ public class ManejoController {
 
 	}
 
-//	@RequestMapping("/pesquisar/data={data_do_dia}")
-//	public String pesquisar(@PathVariable("data_do_dia") LocalDate data, Model model) {
-//
-//		model.addAttribute("data", data);
-//
-//		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();
-//		model.addAttribute("dataEHoraAtual", dataEHoraAtual);
-//
-//		
-//		Iterable<Dia> dias = diaService.listaPorData(data.toString());
-//
-//		model.addAttribute("dias", dias);
-//
-//		return "listamenejo/"+data;
-//	}
+	@RequestMapping(value = "/pesquisar", method = RequestMethod.POST)
+	public String pesquisar(String data) {
 
-//	@ResponseBody
-//	@RequestMapping(value = "/pesquisar", method = RequestMethod.POST)
-//	public String pesquisar(LocalDate data, BindingResult result, Model model) {
-//		model.addAttribute("data", data);
-//		Iterable<Bezerro> bezerros = bezerroService.listaPorData(data);
-//		
-//		model.addAttribute("bezerros", bezerros);
-//		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();
-//		model.addAttribute("dataEHoraAtual", dataEHoraAtual);
-//		return "listamanejo";
-//
-//	}
+		return "redirect:listamanejo/" + data;
 
-	@RequestMapping(value = "/pesquisar", method = RequestMethod.GET)
-	public String pesquisar(LocalDate data, BindingResult result, Model model) {
+	}
 
-		model.addAttribute("data", data.toString());
-
+	@RequestMapping("/listamanejo/{data}")
+	public ModelAndView perfil(@PathVariable("data") String data) {
+		ModelAndView mv = new ModelAndView("listamanejo");
 		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();
-		model.addAttribute("dataEHoraAtual", dataEHoraAtual);
-
-		Iterable<Dia> dias = diaService.listaPorData(data.toString());
-
-		model.addAttribute("dias", dias);
-
-		return "listamenejo";
-
+		mv.addObject("dataEHoraAtual", dataEHoraAtual);
+		mv.addObject("data", data);
+		Iterable<Dia> dias = diaService.listaPorData(data);
+		mv.addObject("dias", dias);
+		return mv;
 	}
 
 }
