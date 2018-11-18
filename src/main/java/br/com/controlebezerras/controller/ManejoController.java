@@ -72,12 +72,12 @@ public class ManejoController {
 	}
 
 	@RequestMapping("/listamanejo/{data}")
-	public ModelAndView perfil(@PathVariable("data") LocalDate data) {
+	public ModelAndView perfil(@PathVariable("data") String data) {
 		ModelAndView mv = new ModelAndView("listamanejo");
 		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();
 		mv.addObject("dataEHoraAtual", dataEHoraAtual);
 		mv.addObject("data", data);
-		Iterable<Dia> dias = diaService.listaPorData(data);
+		Iterable<Dia> dias = diaService.listaPorData(data.toString());
 		mv.addObject("dias", dias);
 		return mv;
 	}
