@@ -77,7 +77,7 @@ public class ManejoController {
 		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();
 		mv.addObject("dataEHoraAtual", dataEHoraAtual);
 		mv.addObject("data", data);
-		Iterable<Dia> dias = diaService.listaPorData(data.toString());
+		Iterable<Dia> dias = diaService.listaPorData(data);
 		mv.addObject("dias", dias);
 		return mv;
 	}
