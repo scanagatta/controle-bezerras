@@ -335,17 +335,29 @@ public class Bezerro implements Comparable<Bezerro> {
 		return dataPrevistaDesmame;
 	}
 
-//	public String getTextoDataPrevistaDesmame() {
-//	return dataPrevistaDesmame.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-//}
-//
-//public String getTextoDataUltimaPesagem() {
-//	return dataUltimaPesagem.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-//}
-//
-//public String getTextoDataUltimaMedida() {
-//	return dataUltimaMedida.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-//}
+	public String getTextoDataPrevistaDesmame() {
+		String resposta = "";
+		if (dataPrevistaDesmame != null) {
+			resposta = dataPrevistaDesmame.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+		}
+		return resposta;
+	}
+
+	public String getTextoDataUltimaPesagem() {
+		String resposta = "";
+		if (dataUltimaPesagem != null) {
+			resposta = dataUltimaPesagem.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+		}
+		return resposta;
+	}
+
+	public String getTextoDataUltimaMedida() {
+		String resposta = "";
+		if (dataUltimaMedida != null) {
+			return dataUltimaMedida.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+		}
+		return resposta;
+	}
 
 	public int getDiasTexto() {
 		// faz conversoes do local date para date
