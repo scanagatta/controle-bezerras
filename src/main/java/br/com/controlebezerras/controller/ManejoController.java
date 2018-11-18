@@ -46,20 +46,20 @@ public class ManejoController {
 	public Dia salvar(Dia dia, BindingResult result, Model model) {
 		diaService.update(dia);
 
-		Bezerro bezerro = dia.getBezerro();
-		bezerro = bezerroService.findId(bezerro.getId());
-
-		if (dia.getPesoNoDia() != null) {
-			bezerro.setDataUltimaPesagem(dia.getDataDoDia());
-			bezerro.setUltimaPesagem(dia.getPesoNoDia());
-			bezerroService.updatePeso(bezerro);
-		}
-
-		if (dia.getAlturaNoDia() != null) {
-			bezerro.setDataUltimaMedida(dia.getDataDoDia());
-			bezerro.setUltimaMedida(dia.getAlturaNoDia());
-			bezerroService.updateAltura(bezerro);
-		}
+//		Bezerro bezerro = dia.getBezerro();
+//		bezerro = bezerroService.findId(bezerro.getId());
+//
+//		if (dia.getPesoNoDia() != null) {
+//			bezerro.setDataUltimaPesagem(dia.getDataDoDia());
+//			bezerro.setUltimaPesagem(dia.getPesoNoDia());
+//			bezerroService.updatePeso(bezerro);
+//		}
+//
+//		if (dia.getAlturaNoDia() != null) {
+//			bezerro.setDataUltimaMedida(dia.getDataDoDia());
+//			bezerro.setUltimaMedida(dia.getAlturaNoDia());
+//			bezerroService.updateAltura(bezerro);
+//		}
 
 		return dia;
 
