@@ -1,6 +1,7 @@
 package br.com.controlebezerras.controller;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -77,7 +78,11 @@ public class ManejoController {
 		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();
 		mv.addObject("dataEHoraAtual", dataEHoraAtual);
 		mv.addObject("data", data);
-		Iterable<Dia> dias = diaService.listaPorData(data);
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate date = LocalDate.parse(data,formatter);
+		Iterable<Dia> dias = diaService.listaPorData(date);
+		
 		mv.addObject("dias", dias);
 		return mv;
 	}
