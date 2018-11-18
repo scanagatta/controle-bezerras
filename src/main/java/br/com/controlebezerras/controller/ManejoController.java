@@ -72,7 +72,7 @@ public class ManejoController {
 	}
 
 	@RequestMapping("/listamanejo/{data}")
-	public ModelAndView perfil(@PathVariable("data") String data) {
+	public ModelAndView perfil(@PathVariable("data") LocalDate data) {
 		ModelAndView mv = new ModelAndView("listamanejo");
 		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();
 		mv.addObject("dataEHoraAtual", dataEHoraAtual);
