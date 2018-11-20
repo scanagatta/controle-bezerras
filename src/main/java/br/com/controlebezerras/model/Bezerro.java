@@ -23,6 +23,8 @@ import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import br.com.controlebezerras.extras.FormatadorDataEHora;
+
 @Entity(name = "bezerro")
 public class Bezerro implements Comparable<Bezerro> {
 
@@ -352,11 +354,7 @@ public class Bezerro implements Comparable<Bezerro> {
 	}
 
 	public String getTextoDataUltimaMedida() {
-		String resposta = "";
-		if (dataUltimaMedida != null) {
-			return dataUltimaMedida.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-		}
-		return resposta;
+		return FormatadorDataEHora.formatarData(dataUltimaMedida);
 	}
 
 	public int getDiasTexto() {
