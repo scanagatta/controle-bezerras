@@ -1,13 +1,9 @@
 package br.com.controlebezerras.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -198,73 +194,13 @@ public class Bezerro implements Comparable<Bezerro> {
 
 	public String getDataNascimentoTexto() {
 
-		return dataNascimento.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+		return FormatadorDataEHora.formatarData(dataNascimento);
 	}
 
 	public String getIdadeTexto() {
 
-		return diferencaEntreDatas(LocalDate.now().toString(), dataNascimento.toString());
-
-	}
-
-	public String diferencaEntreDatas(String maiorData, String menorData) {
-
-		try {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			GregorianCalendar maior = new GregorianCalendar();
-			maior.setTime(dateFormat.parse(maiorData));
-			GregorianCalendar menor = new GregorianCalendar();
-			menor.setTime(dateFormat.parse(menorData));
-			GregorianCalendar dif = new GregorianCalendar();
-			dif.setTimeInMillis(maior.getTimeInMillis() - menor.getTimeInMillis());
-
-			int anos = (maior.get(GregorianCalendar.YEAR) - menor.get(GregorianCalendar.YEAR));
-			int meses = (dif.get(GregorianCalendar.MONTH));
-			int dias = dif.get(GregorianCalendar.DAY_OF_MONTH) - 1;
-
-			if (dataNascimento.equals(LocalDate.now())) {
-				return "nasceu hoje";
-			}
-
-			if (dias > 31) {
-				dias = 0;
-				meses = meses + 1;
-			}
-
-			String textoDia = " dia";
-			if (dias > 1) {
-				textoDia = " dias";
-			}
-
-			String textoMes = " mes";
-			if (meses > 1) {
-				textoMes = " meses";
-			}
-
-			String textoAno = " ano";
-			if (anos > 1) {
-				textoMes = " anos";
-			}
-
-			String resposta = anos + textoAno + meses + textoMes + " e " + dias + textoDia;
-
-			if (anos == 0) {
-				resposta = meses + textoMes + " e " + dias + textoDia;
-				if (meses == 0) {
-					resposta = dias + textoDia;
-
-				}
-				if (dias == 0) {
-					resposta = meses + textoMes;
-				}
-			}
-
-			return resposta + " de vida";
-		} catch (ParseException ex) { // Lança exceção caso a data informada não esteja no formato "dd/MM/yyyy"
-			ex.printStackTrace(System.err);
-			String resposta = "";
-			return resposta;
-		}
+		return FormatadorDataEHora.diferencaEntreDatas(LocalDate.now().toString(), dataNascimento.toString(),
+				dataNascimento);
 
 	}
 
@@ -338,19 +274,11 @@ public class Bezerro implements Comparable<Bezerro> {
 	}
 
 	public String getTextoDataPrevistaDesmame() {
-		String resposta = "";
-		if (dataPrevistaDesmame != null) {
-			resposta = dataPrevistaDesmame.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-		}
-		return resposta;
+		return FormatadorDataEHora.formatarData(dataPrevistaDesmame);
 	}
 
 	public String getTextoDataUltimaPesagem() {
-		String resposta = "";
-		if (dataUltimaPesagem != null) {
-			resposta = dataUltimaPesagem.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-		}
-		return resposta;
+		return FormatadorDataEHora.formatarData(dataUltimaPesagem);
 	}
 
 	public String getTextoDataUltimaMedida() {
