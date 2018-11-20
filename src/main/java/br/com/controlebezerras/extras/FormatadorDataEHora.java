@@ -3,10 +3,13 @@ package br.com.controlebezerras.extras;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 
 //uso da API Joda-Time
 public class FormatadorDataEHora {
@@ -91,5 +94,15 @@ public class FormatadorDataEHora {
 			return resposta;
 		}
 
+	}
+
+	public static int diferencaEmDias(LocalDate dataNascimento) {
+		// faz conversoes do local date para date
+		// e depois do date para date time
+		Date date = Date.from(dataNascimento.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		DateTime dateTime = new DateTime(date);
+		// metodo que calcula a quantidade de dias
+		Days dias = Days.daysBetween(dateTime, DateTime.now());
+		return dias.getDays();
 	}
 }

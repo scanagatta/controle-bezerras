@@ -1,9 +1,7 @@
 package br.com.controlebezerras.model;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,8 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.joda.time.DateTime;
-import org.joda.time.Days;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import br.com.controlebezerras.extras.FormatadorDataEHora;
@@ -286,13 +282,7 @@ public class Bezerro implements Comparable<Bezerro> {
 	}
 
 	public int getDiasTexto() {
-		// faz conversoes do local date para date
-		// e depois do date para date time
-		Date date = Date.from(dataNascimento.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		DateTime dateTime = new DateTime(date);
-		// metodo que calcula a quantidade de dias
-		Days dias = Days.daysBetween(dateTime, DateTime.now());
-		return dias.getDays();
+		return FormatadorDataEHora.diferencaEmDias(dataNascimento);
 	}
 
 	public void setDataPrevistaDesmame(LocalDate dataPrevistaDesmame) {
