@@ -9,7 +9,8 @@ public class FormatadorDataEHora {
 	public static String formatarData(LocalDate data) {
 		String vazio = "";
 		if (data != null) {
-			String dataTexto = data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			String dataTexto = data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+			dataTexto.replaceAll("-", "/");
 			return dataTexto;
 		}
 		return vazio;
