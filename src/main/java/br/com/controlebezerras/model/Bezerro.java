@@ -57,9 +57,6 @@ public class Bezerro implements Comparable<Bezerro> {
 	private LocalDate dataUltimaMedida;
 	private Double ultimaMedida;
 
-	private Double pesoFinal;
-	private Double alturaFinal;
-
 	public Bezerro() {
 		dias = new ArrayList<Dia>();
 		status = Status.AMAMENTADO;
@@ -69,8 +66,7 @@ public class Bezerro implements Comparable<Bezerro> {
 	public Bezerro(Long id, String numero, String nome, LocalDate dataNascimento, String sexo, Vaca vaca, Touro touro,
 			Status status, Raca raca, Double pesoInicial, Double alturaInicial, String observacao, List<Dia> dias,
 			LocalDate dataPrevistaDesmame, Double pesoPrevistoFinal, Double ganhoPesoDia, LocalDate dataUltimaPesagem,
-			Double ultimaPesagem, LocalDate dataUltimaMedida, Double ultimaMedida, Double pesoFinal,
-			Double alturaFinal) {
+			Double ultimaPesagem, LocalDate dataUltimaMedida, Double ultimaMedida) {
 		super();
 		this.id = id;
 		this.numero = numero;
@@ -92,13 +88,15 @@ public class Bezerro implements Comparable<Bezerro> {
 		this.ultimaPesagem = ultimaPesagem;
 		this.dataUltimaMedida = dataUltimaMedida;
 		this.ultimaMedida = ultimaMedida;
-		this.pesoFinal = pesoFinal;
-		this.alturaFinal = alturaFinal;
 	}
 
 	public void setarValores() {
 		if (pesoInicial != null) {
 			pesoPrevistoFinal = pesoInicial + pesoInicial;
+			ultimaPesagem = pesoInicial;
+		}
+		if (alturaInicial != null) {
+			ultimaMedida = alturaInicial;
 		}
 		dataPrevistaDesmame = dataNascimento.plusDays(60);
 	}
@@ -295,22 +293,6 @@ public class Bezerro implements Comparable<Bezerro> {
 
 	public void setGanhoPesoDia(Double ganhoPesoDia) {
 		this.ganhoPesoDia = ganhoPesoDia;
-	}
-
-	public Double getPesoFinal() {
-		return pesoFinal;
-	}
-
-	public void setPesoFinal(Double pesoFinal) {
-		this.pesoFinal = pesoFinal;
-	}
-
-	public Double getAlturaFinal() {
-		return alturaFinal;
-	}
-
-	public void setAlturaFinal(Double alturaFinal) {
-		this.alturaFinal = alturaFinal;
 	}
 
 	public Double getPesoPrevistoFinal() {

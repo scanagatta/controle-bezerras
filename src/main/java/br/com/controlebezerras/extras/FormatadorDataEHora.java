@@ -48,7 +48,7 @@ public class FormatadorDataEHora {
 
 			int anos = (maior.get(GregorianCalendar.YEAR) - menor.get(GregorianCalendar.YEAR));
 			int meses = (dif.get(GregorianCalendar.MONTH));
-			int dias = dif.get(GregorianCalendar.DAY_OF_MONTH) - 1;
+			int dias = dif.get(GregorianCalendar.DAY_OF_MONTH);
 
 			if (dataNascimento.equals(LocalDate.now())) {
 				return "nasceu hoje";

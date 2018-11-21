@@ -34,7 +34,6 @@ public class Vaca implements Serializable {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataNascimento;
 
-	private Integer qtdFilhos;
 	private StatusAdulto status;
 
 	private Raca raca;
@@ -44,23 +43,17 @@ public class Vaca implements Serializable {
 
 	public Vaca() {
 		bezerros = new ArrayList<Bezerro>();
-		qtdFilhos = 0;
 		status = StatusAdulto.ATIVO;
 		dataNascimento = LocalDate.now();
 	}
 
-	public void adicionarBezerro(Bezerro bezerro) {
-		bezerros.add(bezerro);
-	}
-
-	public Vaca(Long id, String numero, String nome, LocalDate dataNascimento, Integer qtdFilhos, StatusAdulto status,
-			Raca raca, List<Bezerro> bezerros) {
+	public Vaca(Long id, String numero, String nome, LocalDate dataNascimento, StatusAdulto status, Raca raca,
+			List<Bezerro> bezerros) {
 		super();
 		this.id = id;
 		this.numero = numero;
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
-		this.qtdFilhos = qtdFilhos;
 		this.status = status;
 		this.raca = raca;
 		this.bezerros = bezerros;
@@ -105,14 +98,6 @@ public class Vaca implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public Integer getQtdFilhos() {
-		return qtdFilhos;
-	}
-
-	public void setQtdFilhos(Integer qtdFilhos) {
-		this.qtdFilhos = qtdFilhos;
 	}
 
 	public List<Bezerro> getBezerros() {

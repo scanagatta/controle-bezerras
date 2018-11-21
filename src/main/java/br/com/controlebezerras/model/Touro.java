@@ -21,7 +21,6 @@ public class Touro {
 	private String numero;
 	private String nome;
 
-	private Integer qtdFilhos;
 	private StatusAdulto status;
 
 	private Raca raca;
@@ -31,21 +30,14 @@ public class Touro {
 
 	public Touro() {
 		bezerros = new ArrayList<Bezerro>();
-		qtdFilhos = 0;
 		status = StatusAdulto.ATIVO;
 	}
 
-	public void adicionarBezerro(Bezerro bezerro) {
-		bezerros.add(bezerro);
-	}
-
-	public Touro(Long id, String numero, String nome, Integer qtdFilhos, StatusAdulto status, Raca raca,
-			List<Bezerro> bezerros) {
+	public Touro(Long id, String numero, String nome, StatusAdulto status, Raca raca, List<Bezerro> bezerros) {
 		super();
 		this.id = id;
 		this.numero = numero;
 		this.nome = nome;
-		this.qtdFilhos = qtdFilhos;
 		this.status = status;
 		this.raca = raca;
 		this.bezerros = bezerros;
@@ -84,14 +76,6 @@ public class Touro {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public Integer getQtdFilhos() {
-		return qtdFilhos;
-	}
-
-	public void setQtdFilhos(Integer qtdFilhos) {
-		this.qtdFilhos = qtdFilhos;
 	}
 
 	public List<Bezerro> getBezerros() {

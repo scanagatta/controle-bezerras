@@ -186,6 +186,7 @@
            
                                           <a style="text-decoration: none;" th:id="${dia.id}" onclick="passarIdDia(this)" role="button" data-toggle="modal" data-target="#modalDiaBezerro" title="Completar Dados" class="btn btn-primary"> Completar Dados 
                    							<input type="hidden" class="form-control" th:id="${dia.bezerro.id}" />
+                   							<input type="hidden" class="numeroDia form-control" th:id="${dia.numeroDia}" />
                     						<input type="hidden" class="dataDia form-control" th:id="${dia.dataDoDia}" /></a>
                     
                     </div>
@@ -239,6 +240,9 @@
 	        	
 	        	var dataDoDia = elemento.getElementsByClassName("dataDia")[0].id;
 	        	$('#formDiaBezerro #dataDoDia').val(dataDoDia);
+	        	
+	        	var numeroDia = elemento.getElementsByClassName("numeroDia")[0].id;
+	        	$('#formDiaBezerro #numeroDia').val(numeroDia);
 	        }
 
         </script>
