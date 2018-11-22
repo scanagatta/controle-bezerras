@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.joda.time.Days;
 
 //uso da API Joda-Time
@@ -22,7 +23,9 @@ public class FormatadorDataEHora {
 
 	public static String horaAtual() {
 		DateTime dh = new DateTime();
-		String horaAtual = dh.toString("HH:mm:ss");
+		DateTimeZone timeZone = DateTimeZone.forID("America/Sao_Paulo");
+		DateTime dateTimeBrasil = new DateTime(dh, timeZone);
+		String horaAtual = dateTimeBrasil.toString("HH:mm:ss");
 		return horaAtual;
 	}
 

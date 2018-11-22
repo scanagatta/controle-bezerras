@@ -9,5 +9,5 @@ public class ControleBezerrasAplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ControleBezerrasAplication.class, args);
 	}
-
+	
 }
