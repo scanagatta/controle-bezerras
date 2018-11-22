@@ -93,16 +93,17 @@ public class Bezerro implements Comparable<Bezerro> {
 	public void setarValores() {
 		if (pesoInicial != null) {
 			pesoPrevistoFinal = pesoInicial + pesoInicial;
-			ultimaPesagem = pesoInicial;
-		}
-		if (alturaInicial != null) {
-			ultimaMedida = alturaInicial;
+			if (ultimaPesagem == null) {
+				ultimaPesagem = pesoInicial;
+			}
+			if (ultimaMedida == null) {
+				ultimaMedida = alturaInicial;
+			}
 		}
 		dataPrevistaDesmame = dataNascimento.plusDays(60);
 	}
 
 	public void constroiDias(Bezerro id) {
-
 		dias.add(new Dia(1, dataNascimento, 0.0d, 0.0d, 6, 0, 0, 0, false, false, false, id));
 		dias.add(new Dia(2, dataNascimento.plusDays(1), 0.0d, 0.0d, 0, 4, 0, 0, false, false, false, id));
 		dias.add(new Dia(3, dataNascimento.plusDays(2), 0.0d, 0.0d, 0, 4, 0, 0, false, false, false, id));

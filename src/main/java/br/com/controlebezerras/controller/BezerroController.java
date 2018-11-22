@@ -73,10 +73,11 @@ public class BezerroController {
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public String salvar(Bezerro bezerro, BindingResult result, Model model) {
 
-		if (bezerro.getId() == null && bezerro.getDias().size() == 0) {
+		boolean editandoBezerro = bezerro.getId() != null;
+
+		if (editandoBezerro == false && bezerro.getDias().size() == 0) {
 			bezerro.constroiDias(bezerro);
-		}
-		else {
+		} else {
 			service.deleteDias(bezerro.getId());
 			bezerro.constroiDias(bezerro);
 		}

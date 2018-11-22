@@ -18,13 +18,13 @@ public class DiaService {
 	@Autowired
 	private DiaRepository repository;
 
-	public List<Dia> listaPorData(String string) {
-		try {
-			return repository.listaPorData(string);
-		} catch (NoResultException e) {
-			return new ArrayList<>();
-		}
-	}
+//	public List<Dia> listaPorData(String string) {
+//		try {
+//			return repository.listaPorData(string);
+//		} catch (NoResultException e) {
+//			return new ArrayList<>();
+//		}
+//	}
 
 	public List<Dia> listaPorData(LocalDate string) {
 		try {
