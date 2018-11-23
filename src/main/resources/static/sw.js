@@ -14,24 +14,19 @@ let arquivos = [
 	"js/alertOffline.js",
 ]
 
-
-//now = new Date
-//const nomeStaticoDoCache = 'controle-bezerras-'+now.getHours()+'-'+now.getMinutes()+'-'+now.getMilliseconds();
-const nomeStaticoDoCache = 'paginas';
+const nomeCache = 'paginas';
 
 // Cache on install
 this.addEventListener("install", event => {
   this.skipWaiting();
-
   event.waitUntil(
-    caches.open(nomeStaticoDoCache)
+    caches.open(nomeCache)
       .then(cache => {
     	  console.log("sw instalado");
         return cache.addAll(arquivos);
     })
   )
 });
-
 
 //Clear cache on activate
 this.addEventListener('activate', event => {
@@ -40,27 +35,24 @@ this.addEventListener('activate', event => {
 		  console.log("sw ativado");
       return Promise.all(
         cacheNames
-          //.filter(cacheName => (cacheName.startsWith('controle-bezerras-')))
-          .filter(cacheName => (cacheName !== nomeStaticoDoCache))
+          .filter(cacheName => (cacheName !== nomeCache))
           .map(cacheName => caches.delete(cacheName))
       );
     })
   );
 });
 
-
-
-//verifica se tem rede, senão pega do cache, senão vai pra tela de offline
+//verifica se tem rede, senão tem pega do cache, senão existir vai pra tela de offline
 self.addEventListener('fetch', function(event) {
 	  event.respondWith(
 	    fetch(event.request).catch(function() {
-	      return caches.match(event.request)
-      .then(response => {
-        return response || fetch(event.request);
-      })
-      .catch(() => {
-        return caches.match('/offline');
-      })
+		    	return caches.match(event.request)
+		    .then(response => {
+		    	return response || fetch(event.request);
+		    })
+		    .catch(() => {
+		    	return caches.match('/offline');
+		    })
 	    })
 	  );
-	});
+});

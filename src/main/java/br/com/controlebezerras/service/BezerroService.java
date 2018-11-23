@@ -1,6 +1,5 @@
 package br.com.controlebezerras.service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,11 +18,8 @@ public class BezerroService {
 	private BezerroRepository repository;
 
 	public Iterable<Bezerro> obterTodos() {
-
 		Iterable<Bezerro> bezerros = repository.findAll();
-
 		return bezerros;
-
 	}
 
 	public void salvar(Bezerro bezerro) {
@@ -38,12 +34,10 @@ public class BezerroService {
 	public void delete(Long id) {
 		deleteDias(id);
 		repository.deleteById(id);
-
 	}
 
 	public void deleteDias(Long id) {
 		repository.deleteDias(id);
-
 	}
 
 	public Long contaBezerros() {
@@ -157,17 +151,6 @@ public class BezerroService {
 		}
 	}
 
-	public List<Bezerro> listaPorData(LocalDate data) {
-
-		try {
-
-			return repository.listaPorData(data);
-
-		} catch (NoResultException e) {
-			return new ArrayList<>();
-		}
-	}
-
 	public void updatePeso(Bezerro bezerro) {
 		repository.updatePeso(bezerro.getId(), bezerro.getUltimaPesagem(), bezerro.getDataUltimaPesagem());
 	}
@@ -175,7 +158,7 @@ public class BezerroService {
 	public void updateAltura(Bezerro bezerro) {
 		repository.updateAltura(bezerro.getId(), bezerro.getUltimaMedida(), bezerro.getDataUltimaMedida());
 	}
-	
+
 	public Bezerro get(Long id) {
 		Bezerro bezerro = repository.get(id);
 		return bezerro;

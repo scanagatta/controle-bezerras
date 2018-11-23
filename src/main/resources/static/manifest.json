@@ -1,7 +1,14 @@
 {
   "short_name": "CB",
   "name": "Controle Bezerras",
- "icons": [
+  "scope": "/",
+  "lang": "pt-BR",
+  "orientation": "any",
+  "start_url": "/index",
+  "background_color": "#436073",
+  "display": "standalone",
+  "theme_color": "#436073",
+  "icons": [
   {
    "src": "\/img/android-icon-36x36.png",
    "sizes": "36x36",
@@ -38,18 +45,11 @@
    "type": "image/png",
    "density": "4.0"
   },
-    {
+  {
    "src": "\/img/android-icon-512x512.png",
    "sizes": "512x512",
    "type": "image/png",
    "density": "8.0"
   }
- ],
-  "scope": "/",
-  "lang": "pt-BR",
-  "orientation": "any",
-  "start_url": "/index",
-  "background_color": "#436073",
-  "display": "standalone",
-  "theme_color": "#436073"
+ ]
 }

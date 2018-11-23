@@ -46,9 +46,6 @@ public interface BezerroRepository extends CrudRepository<Bezerro, Long> {
 	@Query("select b from bezerro b where touro_id = ?1")
 	List<Bezerro> listaPorPai();
 
-	@Query("select b from bezerro b where data_prevista_desmame <= ?1")
-	List<Bezerro> listaPorData(LocalDate data);
-
 	@Transactional
 	@Modifying
 	@Query("delete from dia where bezerro_id = ?1")

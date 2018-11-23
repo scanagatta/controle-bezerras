@@ -12,9 +12,6 @@ import org.springframework.data.repository.CrudRepository;
 import br.com.controlebezerras.model.Dia;
 
 public interface DiaRepository extends CrudRepository<Dia, Long> {
-
-//	@Query("select d from dia d where data_do_dia = ?1")
-//	List<Dia> listaPorData(String data);
 	
 	@Query("select d from dia d where data_do_dia = ?1")
 	List<Dia> listaPorData(LocalDate data);
@@ -30,3 +27,4 @@ public interface DiaRepository extends CrudRepository<Dia, Long> {
 	void updateAltura(Long id, Double alturaNoDia);
 
 }
+
