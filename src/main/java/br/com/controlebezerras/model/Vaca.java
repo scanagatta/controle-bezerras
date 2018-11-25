@@ -44,7 +44,7 @@ public class Vaca implements Serializable {
 	public Vaca() {
 		bezerros = new ArrayList<Bezerro>();
 		status = StatusAdulto.ATIVO;
-		dataNascimento = LocalDate.now();
+		//dataNascimento = LocalDate.now();
 	}
 
 	public Vaca(Long id, String numero, String nome, LocalDate dataNascimento, StatusAdulto status, Raca raca,

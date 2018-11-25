@@ -1,5 +1,6 @@
 package br.com.controlebezerras.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name = "touro")
 public class Touro {
@@ -20,6 +22,9 @@ public class Touro {
 
 	private String numero;
 	private String nome;
+
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	private LocalDate dataNascimento;
 
 	private StatusAdulto status;
 
@@ -33,14 +38,24 @@ public class Touro {
 		status = StatusAdulto.ATIVO;
 	}
 
-	public Touro(Long id, String numero, String nome, StatusAdulto status, Raca raca, List<Bezerro> bezerros) {
+	public Touro(Long id, String numero, String nome, LocalDate dataNascimento, StatusAdulto status, Raca raca,
+			List<Bezerro> bezerros) {
 		super();
 		this.id = id;
 		this.numero = numero;
 		this.nome = nome;
+		this.dataNascimento = dataNascimento;
 		this.status = status;
 		this.raca = raca;
 		this.bezerros = bezerros;
+	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	public Long getId() {

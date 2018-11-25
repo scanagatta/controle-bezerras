@@ -16,7 +16,7 @@ let arquivos = [
 
 const nomeCache = 'paginas';
 
-// Cache on install
+// Instalando
 this.addEventListener("install", event => {
   this.skipWaiting();
   event.waitUntil(
@@ -28,7 +28,7 @@ this.addEventListener("install", event => {
   )
 });
 
-//Clear cache on activate
+// Ativando
 this.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -42,7 +42,8 @@ this.addEventListener('activate', event => {
   );
 });
 
-//verifica se tem rede, senão tem pega do cache, senão existir vai pra tela de offline
+// evento de Fetch
+// verifica se tem rede, senão tem pega do cache, senão existir vai pra tela de offline
 self.addEventListener('fetch', function(event) {
 	  event.respondWith(
 	    fetch(event.request).catch(function() {
