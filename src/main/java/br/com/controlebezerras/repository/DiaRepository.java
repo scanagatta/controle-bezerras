@@ -13,7 +13,7 @@ import br.com.controlebezerras.model.Dia;
 
 public interface DiaRepository extends CrudRepository<Dia, Long> {
 	
-	@Query("select d from dia d where data_do_dia = ?1")
+	@Query("select d from dia d join bezerro b on b.id = d.bezerro_id where data_do_dia = ?1 and status = 0")
 	List<Dia> listaPorData(LocalDate data);
 
 	@Transactional
