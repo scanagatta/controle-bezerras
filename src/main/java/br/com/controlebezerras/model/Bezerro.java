@@ -61,6 +61,7 @@ public class Bezerro implements Comparable<Bezerro> {
 		dias = new ArrayList<Dia>();
 		status = Status.AMAMENTADO;
 		dataNascimento = LocalDate.now();
+		ganhoPesoDia = 0d;
 	}
 
 	public Bezerro(Long id, String numero, String nome, LocalDate dataNascimento, String sexo, Vaca vaca, Touro touro,

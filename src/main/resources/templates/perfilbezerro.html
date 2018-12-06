@@ -139,9 +139,9 @@
                         <dl class="dl-horizontal">
                           <dt>Ganho de peso por dia</dt>
                           <dd>
-                          <span th:if="${bezerro.ganhoPesoDia} < 0.350"> <i class="fas fa-arrow-down" title="abaixo do esperado" style="color: red"></i></span> 
+                          <span th:if="${bezerro.ganhoPesoDia} > 0 and ${bezerro.ganhoPesoDia} < 0.350"> <i class="fas fa-arrow-down" title="abaixo do esperado" style="color: red"></i></span> 
                           <span th:if="${bezerro.ganhoPesoDia} >= 0.350"> <i class="fas fa-arrow-up" title="bom" style="color: green"></i></span> 
-                          <span th:text="${bezerro.ganhoPesoDia}"></span> kg 
+                       <span th:text="${bezerro.ganhoPesoDia}"></span> kg 
                           </dd>
                           <dt>Data prevista desmame</dt>
                           <dd><span th:text="${bezerro.textoDataPrevistaDesmame}"></span></dd>

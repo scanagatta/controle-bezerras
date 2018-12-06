@@ -10,7 +10,7 @@ public class HttpsConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// Customize the application security
+		// classe que redireciona do http para o https
 		http.requiresChannel().anyRequest().requiresSecure();
 		http.csrf().disable()
         .anonymous().authorities("ROLE_ANONYMOUS")
