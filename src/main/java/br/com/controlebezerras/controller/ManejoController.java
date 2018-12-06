@@ -60,6 +60,13 @@ public class ManejoController {
 			bezerro.setStatus(Status.DESMAMADO);
 			bezerroService.salvar(bezerro);
 		}
+		int numeroDia = dia.getNumeroDia() - 1;
+		if (numeroDia == 0) {
+			bezerro.setGanhoPesoDia(0d);
+		} else {
+			bezerro.setGanhoPesoDia((bezerro.getUltimaPesagem() - bezerro.getPesoInicial()) / numeroDia);
+		}
+		bezerroService.salvar(bezerro);
 		return dia;
 	}
 
@@ -82,9 +89,3 @@ public class ManejoController {
 		return mv;
 	}
 }
-
-
-
-
-
-

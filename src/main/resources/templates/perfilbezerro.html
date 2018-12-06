@@ -117,9 +117,9 @@
                           <dt>Idade em dias</dt>
                           <dd><span th:text="${bezerro.diasTexto}"></span></dd>
                           <dt>Altura Inicial</dt>
-                          <dd><span th:text="${bezerro.alturaInicial}"></span></dd>
+                          <dd><span th:text="${bezerro.alturaInicial}"></span> m </dd>
                           <dt>Peso Inicial</dt>
-                          <dd><span th:text="${bezerro.pesoInicial}"></span></dd>
+                          <dd><span th:text="${bezerro.pesoInicial}"></span> kg </dd>
                        
                        <dt> </dt>
                        <dd><br></dd>
@@ -137,10 +137,16 @@
                         Previsões
                         </h4>
                         <dl class="dl-horizontal">
+                          <dt>Ganho de peso por dia</dt>
+                          <dd>
+                          <span th:if="${bezerro.ganhoPesoDia} < 0.350"> <i class="fas fa-arrow-down" title="abaixo do esperado" style="color: red"></i></span> 
+                          <span th:if="${bezerro.ganhoPesoDia} >= 0.350"> <i class="fas fa-arrow-up" title="bom" style="color: green"></i></span> 
+                          <span th:text="${bezerro.ganhoPesoDia}"></span> kg 
+                          </dd>
                           <dt>Data prevista desmame</dt>
                           <dd><span th:text="${bezerro.textoDataPrevistaDesmame}"></span></dd>
                           <dt>Peso final previsto</dt>
-                          <dd><span th:text="${bezerro.pesoPrevistoFinal}"></span></dd>
+                          <dd><span th:text="${bezerro.pesoPrevistoFinal}"></span> kg </dd>
                         </dl>
                       </div>
                     </div>

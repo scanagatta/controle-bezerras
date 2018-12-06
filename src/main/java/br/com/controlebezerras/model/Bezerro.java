@@ -152,7 +152,7 @@ public class Bezerro implements Comparable<Bezerro> {
 				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 1, racao - 100, false, true, false,
 						id));
 			} else if (i == 60) {
-				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 1, racao - 100, true, true, false,
+				dias.add(new Dia(i, dataNascimento.plusDays(d), 0.0d, 0.0d, 0, 0, 1, racao - 100, true, true, true,
 						id));
 			}
 

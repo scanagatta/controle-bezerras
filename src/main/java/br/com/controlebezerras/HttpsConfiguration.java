@@ -11,6 +11,7 @@ public class HttpsConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// Customize the application security
 		http.requiresChannel().anyRequest().requiresSecure();
+		http.authorizeRequests();
 	}
 
 }
