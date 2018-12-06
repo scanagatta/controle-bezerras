@@ -85,7 +85,7 @@ footer {
 	margin-top: 0px !important;
 }
 
-@media ( max-height : 700px) {
+@media ( min-height : 700px) {
 	footer {
 		position: relative !important;
 	}
