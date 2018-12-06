@@ -80,16 +80,12 @@ footer {
 	min-height: 398px;
 }
 
-.paginaGrande {
-	min-height: 1200px;
-}
-
 }
 .checkbox, .radio {
 	margin-top: 0px !important;
 }
 
-@media ( max-width : 1460px) {
+@media ( max-height : 1000px) {
 	footer {
 		position: relative !important;
 	}
