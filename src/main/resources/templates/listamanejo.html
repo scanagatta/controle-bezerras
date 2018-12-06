@@ -90,8 +90,9 @@
                   <table class="table table-hover table-striped table-condensed table-bordered">
                      <th:block th:each="dia : ${dias}">
                         <tr class="animal" th:attr="id=${dia.id}">
+
                            <td colspan="9999">
-                              <div class="panel" style="margin-bottom: 10px;">
+                              <div class="panel" style="margin-bottom: 0px !important;">
                                  <div class="panel-body no-padding" style="padding-bottom: 0px;">
                                     <div class="col-xs-12 header no-margin-top">
                                        <div class="col-sm-4" style="padding-left: 0px;">
@@ -115,6 +116,7 @@
                                           <span th:text="${dia.bezerro.observacao}"></span>
                                        </div>
                                     </div>
+                                    <div  th:attr="class=${dia.id}">
                                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                                        <dl class="dl-horizontal">
                                           <dt>Colostro</dt>
@@ -189,8 +191,15 @@
                                        </div>
                                     </div>
                                  </div>
+                                 </div>
                               </div>
                            </td>
+                                                                     <td class="text-center" onclick="exibeFilhos(this)" style="width: 45px !important">
+                    <a title="Ver filhos">
+                      <i class="far fa-circle" style="font-size:40px;color:#436073;"></i>
+                      <span class="sr-only">Filhos</span>
+                    </a>
+                  </td>
                         </tr>
                      </th:block>
                   </table>
@@ -225,6 +234,33 @@
       </script>
       <script type="text/javascript">
          $("#altura").mask("0.00");
+      </script>
+      <script type="text/javascript">
+      function exibeFilhos(elemento) {
+        	var elementoPai = elemento.parentNode;
+        	
+        	var filhos = elemento.childNodes[1];
+        	var icone = filhos.childNodes[1];
+        	
+        	
+        	var x = document.getElementsByClassName(elementoPai.id);
+        	var i;
+        	for (i = 0; i < x.length; i++) {
+        	    var bezerro = x[i];
+    	      if(bezerro.style.display == "none"){
+  	    	  bezerro.style.display = "";
+  	    	  icone.className = 'far fa-circle';
+  	    	icone.style = 'font-size:40px;color:#436073;'
+  	      }
+  	      else{
+  	      	bezerro.style.display = "none";
+  	      	icone.className = 'fas fa-check-circle';
+  	      	icone.style = 'font-size:40px;color:green;'
+  	      }
+        	}
+
+
+        }
       </script>
    </body>
    </body>
