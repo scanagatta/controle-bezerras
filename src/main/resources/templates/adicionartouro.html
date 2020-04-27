@@ -24,7 +24,7 @@
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/css/style.css" rel="stylesheet" >
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">  
-    <title>Editar Touro</title>
+    <title>Touro</title>
   </head>
   <body>
     <script src="/js/addPagNoCache.js"></script>
@@ -59,7 +59,7 @@
         <div class="row">
         <div class="col-sm-6">
           <blockquote>
-            <h1>Editar Touro</h1>
+            <h1>Touro</h1>
           </blockquote>
         </div>
         <div class="col-sm-6 text-right">
@@ -73,7 +73,7 @@
             <div class="row">
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="numero">Número</label> <input type="number" class="form-control" th:field="*{numero}" required="required"/>
+                  <label for="numero">Número</label> <input type="number" class="form-control" th:field="*{numero}"/>
                 </div>
               </div>
             </div>
@@ -81,6 +81,13 @@
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="nome">Nome</label> <input type="text" class="form-control" th:field="*{nome}" required="required" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="marca">Marca</label> <input type="text" class="form-control" th:field="*{marca}" />
                 </div>
               </div>
             </div>

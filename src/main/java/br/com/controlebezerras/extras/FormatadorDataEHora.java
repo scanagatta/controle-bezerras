@@ -49,8 +49,8 @@ public class FormatadorDataEHora {
 			GregorianCalendar dif = new GregorianCalendar();
 			dif.setTimeInMillis(maior.getTimeInMillis() - menor.getTimeInMillis());
 
-			int anos = (maior.get(GregorianCalendar.YEAR) - menor.get(GregorianCalendar.YEAR));
-			int meses = (dif.get(GregorianCalendar.MONTH));
+			int anos = diferencaEmDias(dataNascimento) / 365;
+			int meses = dif.get(GregorianCalendar.MONTH);
 			int dias = dif.get(GregorianCalendar.DAY_OF_MONTH);
 
 			if (dataNascimento.equals(LocalDate.now())) {

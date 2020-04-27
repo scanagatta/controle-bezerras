@@ -1,6 +1,5 @@
 package br.com.controlebezerras.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -24,11 +23,6 @@ public class BezerroService {
 
 	public void salvar(Bezerro bezerro) {
 		repository.save(bezerro);
-	}
-
-	public Bezerro findId(Long id) {
-		repository.findById(id);
-		return new Bezerro();
 	}
 
 	public void delete(Long id) {
@@ -137,17 +131,6 @@ public class BezerroService {
 			return bezerros;
 		} catch (NoResultException e) {
 			return null;
-		}
-	}
-
-	public List<Bezerro> listaPorMae(Long codigo) {
-
-		try {
-
-			return repository.listaPorMae(codigo);
-
-		} catch (NoResultException e) {
-			return new ArrayList<>();
 		}
 	}
 

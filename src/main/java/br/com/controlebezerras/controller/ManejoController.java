@@ -48,17 +48,14 @@ public class ManejoController {
 			bezerro.setDataUltimaPesagem(dia.getDataDoDia());
 			bezerro.setUltimaPesagem(dia.getPesoNoDia());
 			diaService.updatePeso(dia);
-			bezerroService.salvar(bezerro);
 		}
 		if (dia.getAlturaNoDia() != null) {
 			bezerro.setDataUltimaMedida(dia.getDataDoDia());
 			bezerro.setUltimaMedida(dia.getAlturaNoDia());
 			diaService.updateAltura(dia);
-			bezerroService.salvar(bezerro);
 		}
 		if (dia.getNumeroDia() == 60) {
 			bezerro.setStatus(Status.DESMAMADO);
-			bezerroService.salvar(bezerro);
 		}
 		int numeroDia = dia.getNumeroDia() - 1;
 		if (numeroDia == 0) {

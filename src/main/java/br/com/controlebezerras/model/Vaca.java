@@ -1,6 +1,5 @@
 package br.com.controlebezerras.model;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import br.com.controlebezerras.extras.FormatadorDataEHora;
 
 @Entity(name = "vaca")
-public class Vaca implements Serializable {
-
-	/**
-	 * Serial number.
-	 */
-	private static final long serialVersionUID = 1L;
+public class Vaca {
 
 	@Id
 	@GeneratedValue(generator = "increment")
@@ -44,7 +38,6 @@ public class Vaca implements Serializable {
 	public Vaca() {
 		bezerros = new ArrayList<Bezerro>();
 		status = StatusAdulto.ATIVO;
-		//dataNascimento = LocalDate.now();
 	}
 
 	public Vaca(Long id, String numero, String nome, LocalDate dataNascimento, StatusAdulto status, Raca raca,
@@ -57,12 +50,6 @@ public class Vaca implements Serializable {
 		this.status = status;
 		this.raca = raca;
 		this.bezerros = bezerros;
-	}
-
-	public Vaca(String nome) {
-
-		this.nome = nome;
-
 	}
 
 	public Long getId() {

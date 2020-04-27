@@ -28,10 +28,10 @@ public interface BezerroRepository extends CrudRepository<Bezerro, Long> {
 	@Query("SELECT COUNT(id) FROM bezerro where status = 4")
 	Integer qtdStatusMorto();
 
-	@Query("SELECT COUNT(id) FROM bezerro where sexo = 'macho'")
+	@Query("SELECT COUNT(id) FROM bezerro where sexo = 0")
 	Integer qtdSexoMasculino();
 
-	@Query("SELECT COUNT(id) FROM bezerro where sexo = 'femea'")
+	@Query("SELECT COUNT(id) FROM bezerro where sexo = 1")
 	Integer qtdSexoFeminino();
 
 	@Query("SELECT bez FROM bezerro bez where status = 0")
@@ -39,13 +39,7 @@ public interface BezerroRepository extends CrudRepository<Bezerro, Long> {
 
 	@Query("SELECT bez FROM bezerro bez where status = 1")
 	List<Bezerro> listaDesmamados();
-
-	@Query("select b from bezerro b where vaca_id = ?1")
-	List<Bezerro> listaPorMae(Long codigo);
-
-	@Query("select b from bezerro b where touro_id = ?1")
-	List<Bezerro> listaPorPai();
-
+	
 	@Transactional
 	@Modifying
 	@Query("delete from dia where bezerro_id = ?1")

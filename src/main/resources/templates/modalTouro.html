@@ -27,7 +27,7 @@
 								<form id="formTouro" th:action="@{/touro/salvar}" method="post" style="margin-bottom: 50px;">
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label for="numero">Numero</label> <input type="number" class="form-control" name="numero" required="required"/>
+											<label for="numero">Numero</label> <input type="number" class="form-control" name="numero"/>
 										</div>
 									</div>
 									<div class="col-sm-6">
@@ -35,6 +35,11 @@
 											<label for="nome">Nome</label> <input type="text" class="form-control" name="nome" required="required" />
 										</div>
 									</div>
+						              <div class="col-sm-6">
+						                <div class="form-group">
+						                  <label for="marca">Marca</label> <input type="text" class="form-control" name="marca" />
+						                </div>
+						              </div>
 									
 									                  <div class="col-sm-6">
                     <div class="form-group">

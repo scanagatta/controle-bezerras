@@ -68,7 +68,10 @@
       </div>
       <div class="pagina">
         <div class="row">
-          <div class="col-sm-offset-7 col-sm-5 col-md-offset-8 col-md-4 text-right">
+          <div class="col-sm-5">
+            <a href="adicionartouro" class="btn btn-md btn-primary" title="Adicionar Touro"><i class="fas fa-plus"></i> Adicionar um novo touro</a>
+          </div>
+          <div class="col-sm-offset-2 col-sm-5 col-md-offset-3 col-md-4 text-right">
             <div class="input-group">
               <span class="input-group-addon"><i class="fas fa-search"></i></span>
               <input type="text" name="filtro" id="filtrar-tabela" class="form-control" title="Campo de busca" placeholder="Busque pelo número ou nome do touro">
@@ -136,7 +139,7 @@
                         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                           <dl class="dl-horizontal">
                             <dt>Sexo</dt>
-                            <dd><span th:text="${bezerro.sexo}"></span></dd>
+                            <dd><span th:text="${bezerro.sexo.descricao}"></span></dd>
                             <dt>Mãe</dt>
                             <dd><a th:href="@{/vaca/editar/{codigo}(codigo=${bezerro.vaca.id})}"  title="Ir para o cadastro">
                               <span th:text="${bezerro.vaca.numeroNome}"></span></a></dd>

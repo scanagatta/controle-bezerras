@@ -29,6 +29,8 @@ public class Touro {
 	private StatusAdulto status;
 
 	private Raca raca;
+	
+	private String marca;
 
 	@OneToMany(mappedBy = "touro")
 	private List<Bezerro> bezerros;
@@ -115,6 +117,14 @@ public class Touro {
 
 	public void setRaca(Raca raca) {
 		this.raca = raca;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
 	}
 
 }

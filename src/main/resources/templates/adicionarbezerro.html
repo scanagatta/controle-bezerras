@@ -25,7 +25,7 @@
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/css/style.css" rel="stylesheet" >
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <title>Adicionar Bezerro</title>
+    <title>Bezerro</title>
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -63,7 +63,7 @@
       <div class="row">
         <div class="col-sm-6">
           <blockquote>
-            <h1>Bezerros</h1>
+            <h1>Bezerro</h1>
           </blockquote>
         </div>
         <div class="col-sm-6 text-right">
@@ -80,11 +80,11 @@
                 <div class="radio inline" id="rdSexo">
                   <label class="radio-inline btn btn-lg btn-default macho">
                     <input type="radio" th:field="*{sexo}"
-                    value="Macho" required="required"/> Macho
+                    value="MACHO" required="required"/> Macho
                   </label>
                   <label class="radio-inline btn btn-lg btn-default femea">
                     <input type="radio" th:field="*{sexo}"
-                    value="Fêmea" required="required"/> Fêmea
+                    value="FEMEA" required="required"/> Fêmea
                   </label>
                 </div>
               </div>
@@ -122,7 +122,7 @@
             <div class="row">
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="idvaca">Nome da mãe</label>
+                  <label for="idvaca">Mãe</label>
                   <div class="input-group">
                     <input type="hidden" class="form-control" id="idvaca" th:field="*{vaca.id}"/>
                     <input type="text" class="form-control ui-autocomplete-input" th:field="*{vaca.nome}" id="autocompleteVacas" required="required" placeholder="busque pelo número ou nome da vaca"/>
@@ -135,7 +135,7 @@
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="idtouro">Nome do pai</label>
+                  <label for="idtouro">Pai</label>
                   <div class="input-group">
                     <input type="hidden" class="form-control" id="idtouro" th:field="*{touro.id}"/>
                     <input type="text" class="form-control ui-autocomplete-input" th:field="*{touro.nome}" id="autocompleteTouros" required="required" placeholder="busque pelo número ou nome do touro"/>

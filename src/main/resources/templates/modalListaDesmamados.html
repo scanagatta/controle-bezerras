@@ -23,8 +23,8 @@
                           <th>Nome</th>
                           <th class="text-center">Data nascimento</th>
                           <th class="text-center">Sexo</th>
-                          <th>Nome da mãe</th>
-                          <th>Nome do pai</th>
+                          <th>Mãe</th>
+                          <th>Pai</th>
                           <th class="text-center">Peso</th>
                           <th class="text-center">Altura</th>
                           <th>Observação</th>
@@ -34,7 +34,7 @@
                         <td class="text-center"><span th:text="${bezerro.numero}"></span></td>
                         <td><span th:text="${bezerro.nome}"></span></td>
                         <td class="text-center"><span th:text="${bezerro.dataNascimentoTexto}"></span></td>
-                        <td class="text-center"><span th:text="${bezerro.sexo}"></span></td>
+                        <td class="text-center"><span th:text="${bezerro.sexo.descricao}"></span></td>
                         <td><span th:text="${bezerro.vaca.nome}"></span></td>
                         <td><span th:text="${bezerro.touro.nome}"></span></td>
                         <td class="text-center"><span th:text="${bezerro.pesoInicial}"></span></td>

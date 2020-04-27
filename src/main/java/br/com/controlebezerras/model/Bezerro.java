@@ -1,5 +1,6 @@
 package br.com.controlebezerras.model;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class Bezerro implements Comparable<Bezerro> {
 
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataNascimento;
-	private String sexo;
+	private Sexo sexo;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Vaca vaca;
@@ -48,6 +49,7 @@ public class Bezerro implements Comparable<Bezerro> {
 	private List<Dia> dias;
 
 	private LocalDate dataPrevistaDesmame;
+	private Double pesoPrevistoDia;
 	private Double pesoPrevistoFinal;
 	private Double ganhoPesoDia;
 
@@ -64,7 +66,7 @@ public class Bezerro implements Comparable<Bezerro> {
 		ganhoPesoDia = 0d;
 	}
 
-	public Bezerro(Long id, String numero, String nome, LocalDate dataNascimento, String sexo, Vaca vaca, Touro touro,
+	public Bezerro(Long id, String numero, String nome, LocalDate dataNascimento, Sexo sexo, Vaca vaca, Touro touro,
 			Status status, Raca raca, Double pesoInicial, Double alturaInicial, String observacao, List<Dia> dias,
 			LocalDate dataPrevistaDesmame, Double pesoPrevistoFinal, Double ganhoPesoDia, LocalDate dataUltimaPesagem,
 			Double ultimaPesagem, LocalDate dataUltimaMedida, Double ultimaMedida) {
@@ -93,7 +95,8 @@ public class Bezerro implements Comparable<Bezerro> {
 
 	public void setarValores() {
 		if (pesoInicial != null) {
-			pesoPrevistoFinal = pesoInicial + pesoInicial;
+			pesoPrevistoFinal = pesoInicial * 2;
+			pesoPrevistoDia =  pesoInicial / 60;
 			if (ultimaPesagem == null) {
 				ultimaPesagem = pesoInicial;
 			}
@@ -209,11 +212,11 @@ public class Bezerro implements Comparable<Bezerro> {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(String sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 
@@ -292,6 +295,15 @@ public class Bezerro implements Comparable<Bezerro> {
 	public Double getGanhoPesoDia() {
 		return ganhoPesoDia;
 	}
+	
+	public String getGanhoPesoDiaFmt() {
+		return arredondaDuasCasas(ganhoPesoDia);
+	}
+
+	private String arredondaDuasCasas(Double valor) {
+		DecimalFormat df = new DecimalFormat("0.00");
+		return df.format(valor);
+	}
 
 	public void setGanhoPesoDia(Double ganhoPesoDia) {
 		this.ganhoPesoDia = ganhoPesoDia;
@@ -368,5 +380,19 @@ public class Bezerro implements Comparable<Bezerro> {
 	public void setUltimaMedida(Double ultimaMedida) {
 		this.ultimaMedida = ultimaMedida;
 	}
+
+	public Double getPesoPrevistoDia() {
+		return pesoPrevistoDia;
+	}
+	
+	public String getPesoPrevistoDiaFmt() {
+		return arredondaDuasCasas(pesoPrevistoDia);
+	}
+
+	public void setPesoPrevistoDia(Double pesoPrevistoDia) {
+		this.pesoPrevistoDia = pesoPrevistoDia;
+	}
+	
+	
 
 }
