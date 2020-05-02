@@ -94,6 +94,9 @@ public class Bezerro implements Comparable<Bezerro> {
 	}
 
 	public void setarValores() {
+		if (pesoPrevistoDia == null) {
+			pesoPrevistoDia = 0d;
+		}
 		if (pesoInicial != null) {
 			pesoPrevistoFinal = pesoInicial * 2;
 			pesoPrevistoDia =  pesoInicial / 60;
