@@ -1,162 +1,198 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="Description" content="Controle Bezerras">
-    <meta http-equiv="Content-Language" content="pt-br">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/img/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-    <meta name="msapplication-TileColor" content="#436073">
-    <meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png">
-    <meta name="theme-color" content="#436073">
-    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/css/style.css" rel="stylesheet" >
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <title>Perfil Bezerro</title>
-  </head>
-  <body>
-      <script src="/js/addPagNoCache.js"></script>
-    <nav class="navbar navbar-default">
-      <div class="menu">
-        <div class="navbar-header">
-          <button type="button" title="Menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="">Controle Bezerras</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li><a href="/index">Painel</a></li>
-            <li class="active"><a href="/bezerro/listabezerros" style="color:#000 !important;">Bezerros</a></li>
-            <li><a href="/vaca/listavacas">Vacas</a></li>
-            <li><a href="/touro/listatouros">Touros</a></li>
-            <li><a href="/manejo/listamanejo">Manejo</a></li>
-          </ul>
-
-        </div>
-      </div>
-    </nav>
-    <div class="container-fluid">
-            <div class="row">
-              <div class="col-xs-12">
-          <div id="primeiralinha"></div>
-        </div>
-        </div>
-        <div class="row">
-        <div class="col-sm-6">
-          <blockquote>
-            <h1>Perfil Bezerro </h1>
-          </blockquote>
-        </div>
-        <div class="col-sm-6 text-right">
-          <h5>Última atualização dia <span th:text="${dataEHoraAtual}"></span> horas</h5>
-        </div>
-      </div>
-      <div class="pagina">
-        <div class="container-fluid">
-          <div class="row panel">
-            <div class="container-fluid">
-              <div class="col-xs-12" style="margin-top: 10px">
-               <div class="pull-right">
-                <a th:href="@{/bezerro/editar/{codigo}(codigo=${bezerro.id})}" class="btn btn-md btn-primary no-margin no-padding" title="Editar Bezerro"><i class="fas fa-pencil-alt"></i> Editar Bezerro</a>
-                </div>
-                <h4>
-                <i class="fas fa-ticket-alt"></i>
-                <span th:text="${bezerro.numero}"></span> <span th:text="${bezerro.nome}"></span>
-                - <span th:text="${bezerro.idadeTexto}"></span>
-                </h4>
-              </div>
-<!--               <div class="col-xs-12 col-sm-4 text-center"> -->
-<!--                 <img class="text-center img img-responsive foto-bezerro" style="border: solid 15px;" alt="foto bezerro" src="http://spgadoholandes.com.br/wp-content/uploads/2016/09/Bezerro1-1-300x300.jpg"> -->
-<!--                 <br> -->
-<!--               </div> -->
-              <div class="col-xs-12 col-sm-6 col-md-4">
-                <h4 class="widget-title smaller">
-                <i class="ace-icon fa fa-info bigger-110"></i>
-                Informações gerais
-                </h4>
-                <dl class="dl-horizontal">
-                  <dt>Data de nascimento</dt>
-                  <dd><span th:text="${bezerro.dataNascimentoTexto}"></span></dd>
-                  <dt>Sexo</dt>
-                  <dd><span th:text="${bezerro.sexo.descricao}"></span></dd>
-                  <dt>Raça</dt>
-                  <dd><span th:text="${bezerro.raca.descricao}"></span></dd>
-                  <dt>Mãe</dt>
-                  <dd><a th:href="@{/vaca/editar/{codigo}(codigo=${bezerro.vaca.id})}"  title="Ir para o cadastro">
-                    <span th:text="${bezerro.vaca.numeroNome}"></span></a></dd>
-                    <dt>Pai</dt>
-                    <dd><a th:href="@{/touro/editar/{codigo}(codigo=${bezerro.touro.id})}"  title="Ir para o cadastro">
-                      <span th:text="${bezerro.touro.numeroNome}"></span></a></dd>
-                      <dt>Status</dt>
-                      <dd><span th:text="${bezerro.status.descricao}"></span></dd>
-                      <dt>Observação</dt>
-                      <dd><span th:text="${bezerro.observacao}"></span></dd>
-                    </dl>
-                  </div>
-                  <div class="col-xs-12 col-sm-6 col-md-4">
-                        <h4 class="widget-title smaller">
-                        <i class="ace-icon fas fa-heartbeat bigger-110"></i>
-                        Informações Físicas
-                        </h4>
-                        <dl class="dl-horizontal">
-                          <dt>Idade em dias</dt>
-                          <dd><span th:text="${bezerro.diasTexto}"></span></dd>
-                          <dt>Altura Inicial</dt>
-                          <dd><span th:text="${bezerro.alturaInicial}"></span> m </dd>
-                          <dt>Peso Inicial</dt>
-                          <dd><span th:text="${bezerro.pesoInicial}"></span> kg </dd>
-                       
-                       <dt> </dt>
-                       <dd><br></dd>
-                        
-                                                <dt>Ultima Pesagem</dt>
-                          <dd><span th:text="${bezerro.ultimaPesagem}"></span> kg<br><span th:text="${bezerro.textoDataUltimaPesagem}"></span></dd>
-                        <dt>Ultima Medida</dt>
-                          <dd><span th:text="${bezerro.ultimaMedida}"></span> m <br><span th:text="${bezerro.textoDataUltimaMedida}"></span></dd>
-                          <dt>Ganho de peso por dia</dt>
-                          <dd>
-                          	<span th:if="${bezerro.ganhoPesoDia} > 0 and ${bezerro.ganhoPesoDia} < ${bezerro.pesoPrevistoDia}"> <i class="fas fa-arrow-down" title="abaixo do esperado" style="color: red"></i></span> 
-                          	<span th:if="${bezerro.ganhoPesoDia} >= ${bezerro.pesoPrevistoDia}"> <i class="fas fa-arrow-up" title="bom" style="color: green"></i></span> 
-                      	  	<span th:text="${bezerro.ganhoPesoDiaFmt}"></span> kg (ideal: 	<span th:text="${bezerro.pesoPrevistoDiaFmt}"></span> kg )
-                          </dd>
-                        </dl>
-                      </div>
-                      <div class="col-xs-12 col-sm-6 col-md-4">
-                        <h4 class="widget-title smaller">
-                        <i class="ace-icon fas fa-chart-line bigger-110"></i>
-                        Previsões
-                        </h4>
-                        <dl class="dl-horizontal">
-                          <dt>Data prevista desmame</dt>
-                          <dd><span th:text="${bezerro.textoDataPrevistaDesmame}"></span></dd>
-                          <dt>Peso final previsto</dt>
-                          <dd><span th:text="${bezerro.pesoPrevistoFinal}"></span> kg </dd>
-                        </dl>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-     
-        <div th:insert="rodape :: copy"></div>
-        <script src="/js/jquery.js"></script>
-        <script src="/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/js/alertOffline.js"></script>
-      </body>
-    </html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="Description" content="Controle Bezerras">
+		<meta http-equiv="Content-Language" content="pt-br">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/img/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192" href="/img/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+		<meta name="msapplication-TileColor" content="#436073">
+		<meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png">
+		<meta name="theme-color" content="#436073">
+		<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="/css/style.css" rel="stylesheet" >
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<title>Perfil Bezerro</title>
+	</head>
+	<body>
+		<script src="/js/addPagNoCache.js"></script>
+		<nav class="navbar navbar-default">
+			<div class="menu">
+				<div class="navbar-header">
+					<button type="button" title="Menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="">Controle Bezerras</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><a href="/index">Painel</a></li>
+						<li class="active"><a href="/bezerro/listabezerros" style="color:#000 !important;">Bezerros</a></li>
+						<li><a href="/vaca/listavacas">Vacas</a></li>
+						<li><a href="/touro/listatouros">Touros</a></li>
+						<li><a href="/manejo/listamanejo">Manejo</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12">
+					<div id="primeiralinha"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<blockquote>
+						<h1>Perfil Bezerro </h1>
+					</blockquote>
+				</div>
+				<div class="col-sm-6 text-right">
+					<h5>Última atualização dia <span th:text="${dataEHoraAtual}"></span> horas</h5>
+				</div>
+			</div>
+			<div class="pagina">
+				<div class="container-fluid">
+					<div class="row panel">
+						<div class="container-fluid">
+							<div class="col-xs-12" style="margin-top: 10px">
+								<div class="pull-right">
+									<a th:href="@{/bezerro/editar/{codigo}(codigo=${bezerro.id})}" class="btn btn-md btn-primary no-margin no-padding" title="Editar Bezerro"><i class="fas fa-pencil-alt"></i> Editar Bezerro</a>
+								</div>
+								<h4>
+									<i class="fas fa-ticket-alt"></i>
+									<span th:text="${bezerro.numero}"></span> <span th:text="${bezerro.nome}"></span>
+									- <span th:text="${bezerro.idadeTexto}"></span>
+								</h4>
+							</div>
+							<!--               <div class="col-xs-12 col-sm-4 text-center"> -->
+							<!--                 <img class="text-center img img-responsive foto-bezerro" style="border: solid 15px;" alt="foto bezerro" src="http://spgadoholandes.com.br/wp-content/uploads/2016/09/Bezerro1-1-300x300.jpg"> -->
+							<!--                 <br> -->
+							<!--               </div> -->
+							<div class="col-xs-12 col-sm-6 col-md-4">
+								<h4 class="widget-title smaller">
+									<i class="ace-icon fa fa-info bigger-110"></i>
+									Informações gerais
+								</h4>
+								<div class="secao">
+								<div class="row">
+									<div class="col-xs-6 text-right">Data de nascimento</div>
+									<div class="col-xs-6"><span th:text="${bezerro.dataNascimentoTexto}"></span></div>
+									</div>
+									<div class="row">
+									<div class="col-xs-6 text-right">Sexo</div>
+									<div class="col-xs-6"><span th:text="${bezerro.sexo.descricao}"></span></div>
+									
+									</div>
+									<div class="row">
+									<div class="col-xs-6 text-right">Raça</div>
+									<div class="col-xs-6"><span th:text="${bezerro.raca.descricao}"></span></div>
+									</div>
+									<div class="row">
+									<div class="col-xs-6 text-right">Mãe</div>
+									<div class="col-xs-6"><a th:href="@{/vaca/editar/{codigo}(codigo=${bezerro.vaca.id})}"  title="Ir para o cadastro">
+										<span th:text="${bezerro.vaca.numeroNome}"></span></a>
+									</div>
+									</div>
+									<div class="row">
+									<div class="col-xs-6 text-right">Pai</div>
+									<div class="col-xs-6"><a th:href="@{/touro/editar/{codigo}(codigo=${bezerro.touro.id})}"  title="Ir para o cadastro">
+										<span th:text="${bezerro.touro.numeroNome}"></span></a>
+									</div>
+									</div>
+									<div class="row">
+									<div class="col-xs-6 text-right">Status</div>
+									<div class="col-xs-6"><span th:text="${bezerro.status.descricao}"></span></div>
+									</div>
+									<div class="row">
+									<div class="col-xs-6 text-right">Observação</div>
+									<div class="col-xs-6"><span th:text="${bezerro.observacao}"></span></div>
+								</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-4">
+								<h4 class="widget-title smaller">
+									<i class="ace-icon fas fa-heartbeat bigger-110"></i>
+									Informações Físicas
+								</h4>
+								<div class="secao">
+								<div class="row">
+									<div class="col-xs-6 text-right">Idade em dias</div>
+									<div class="col-xs-6"><span th:text="${bezerro.diasTexto}"></span></div>
+									</div>
+									<div class="row">
+									<div class="col-xs-6 text-right">Altura Inicial</div>
+									<div class="col-xs-6"><span th:text="${bezerro.alturaInicial}"></span> m </div>
+									</div>
+									<div class="row">
+									<div class="col-xs-6 text-right">Peso Inicial</div>
+									<div class="col-xs-6"><span th:text="${bezerro.pesoInicial}"></span> kg </div>
+									</div>
+				
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-4">
+								<h4 class="widget-title smaller">
+									<i class="ace-icon fas fa-chart-line bigger-110"></i>
+									Evolução
+								</h4>
+								<div class="secao">
+					<div class="row">
+									<div class="col-xs-6 text-right">Ultima Pesagem</div>
+									<div class="col-xs-6"><span th:text="${bezerro.ultimaPesagem}"></span> kg<br><span th:text="${bezerro.textoDataUltimaPesagem}"></span></div>
+									</div>
+									<div class="row">
+									<div class="col-xs-6 text-right">Ultima Medida</div>
+									<div class="col-xs-6"><span th:text="${bezerro.ultimaMedida}"></span> m <br><span th:text="${bezerro.textoDataUltimaMedida}"></span></div>
+									</div>
+									<div class="row">
+									<div class="col-xs-6 text-right">Ganho de peso por dia</div>
+									<div class="col-xs-6">
+										<span th:if="${bezerro.ganhoPesoDia} > 0 and ${bezerro.ganhoPesoDia} < ${bezerro.pesoPrevistoDia}"> <i class="fas fa-arrow-down" title="abaixo do esperado" style="color: red"></i></span> 
+										<span th:if="${bezerro.ganhoPesoDia} >= ${bezerro.pesoPrevistoDia}"> <i class="fas fa-arrow-up" title="bom" style="color: green"></i></span> 
+										<span th:text="${bezerro.ganhoPesoDiaFmt}"></span> kg (ideal: 	<span th:text="${bezerro.pesoPrevistoDiaFmt}"></span> kg )
+									</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-4">
+								<h4 class="widget-title smaller">
+									<i class="ace-icon fas fa-chart-line bigger-110"></i>
+									Previsões
+								</h4>
+								<div class="secao">
+									<div class="row">
+										<div class="col-xs-6 text-right">Data prevista desmame</div>
+										<div class="col-xs-6"><span th:text="${bezerro.textoDataPrevistaDesmame}"></span></div>
+									</div>
+									<div class="row">
+									<div class="col-xs-6 text-right">Peso final previsto</div>
+									<div class="col-xs-6"><span th:text="${bezerro.pesoPrevistoFinal}"></span> kg </div>
+								</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:insert="rodape :: copy"></div>
+		<script src="/js/jquery.js"></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/js/alertOffline.js"></script>
+	</body>
+</html>

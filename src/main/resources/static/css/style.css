@@ -106,6 +106,10 @@ ul li a:focus, ul li a:hover, .active, .table-responsive {
 	}
 }
 
+.panel{
+	padding-bottom: 20px;
+}
+
 .panel, .table, .table-responsive {
 	background-color: #F2F2D4;
 }
