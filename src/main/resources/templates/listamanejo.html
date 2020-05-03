@@ -92,11 +92,11 @@
                         <tr class="animal" th:attr="id=${dia.id}">
 
                            <td colspan="9999">
-                              <div class="panel" style="margin-bottom: 0px !important;">
+                              <div class="panel" style="margin-bottom: 0px !important; padding-bottom: 5px;">
                                  <div class="panel-body no-padding" style="padding-bottom: 0px;">
                                     <div class="col-xs-12 header no-margin-top">
-                                       <div class="col-sm-4" style="padding-left: 0px;">
-                                          <i class="fas fa-link" aria-hidden="true"></i>
+                                       <div class="col-sm-4" style="padiving-left: 0px;">
+                                          <i class="fas fa-link" aria-hidiven="true"></i>
                                           <a th:href="@{/bezerro/perfil/{codigo}(codigo=${dia.bezerro.id})}">
                                           <strong>
                                           Bezerro:
@@ -118,75 +118,96 @@
                                     </div>
                                     <div  th:attr="class=${dia.id}">
                                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                                       <dl class="dl-horizontal">
-                                          <dt>Colostro</dt>
-                                          <dd><span th:text="${dia.colostro}"></span> L</dd>
-                                          <dt>Suplemento Colostro</dt>
-                                          <dd><span th:text="${dia.suplementoColostro}"></span> L</dd>
-                                       </dl>
+                                       <div class="secao">
+                                       <div class="row">
+                                          <div class="col-xs-6 text-right">Colostro</div>
+                                          <div class="col-xs-6"><span th:text="${dia.colostro}"></span> L</div>
+                                          </div>
+                                          <div class="row">
+                                         <div class="col-xs-6 text-right">Suplemento Colostro</div>
+                                          <div class="col-xs-6"><span th:text="${dia.suplementoColostro}"></span> L</div>
+                                       </div>
+                                       </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                                       <dl class="dl-horizontal">
-                                          <dt>Leite</dt>
-                                          <dd><span th:text="${dia.leite}"></span> L</dd>
-                                          <dt>Ração</dt>
-                                          <dd><span th:text="${dia.racao}"></span> g</dd>
-                                       </dl>
+                                       <div class="secao">
+                                       <div class="row">
+                                          <div class="col-xs-6 text-right">Leite</div>
+                                          <div class="col-xs-6"><span th:text="${dia.leite}"></span> L</div>
+                                          </div>
+                                          <div class="row">
+                                          <div class="col-xs-6 text-right">Ração</div>
+                                          <div class="col-xs-6"><span th:text="${dia.racao}"></span> g</div>
+                                       </div>
+                                       </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                                       <dl class="dl-horizontal">
-                                          <dt>Feno</dt>
-                                          <dd>
-                                             <div th:switch="${dia.feno}">
+                                       <div class="secao">
+                                       <div class="row">
+                                         <div class="col-xs-6 text-right">Feno</div>
+                                          <div>
+                                             <div class="col-xs-6" th:switch="${dia.feno}">
                                                 <span th:case="${false}"><i class="fas fa-times-circle vermelho"></i></span>
                                                 <span th:case="${true}"><i class="fas fa-check-circle verde"></i></span>
                                              </div>
-                                          </dd>
-                                          <dt>Vermifugação</dt>
-                                          <dd>
-                                             <div th:switch="${dia.vermifugacao}">
+                                          </div>
+                                          </div>
+                                          <div class="row">
+                                         <div class="col-xs-6 text-right">Vermifugação</div>
+                                          <div>
+                                             <div class="col-xs-6" th:switch="${dia.vermifugacao}">
                                                 <span th:case="${false}"><i class="fas fa-times-circle vermelho"></i></span>
                                                 <span th:case="${true}"><i class="fas fa-check-circle verde"></i></span>
                                              </div>
-                                          </dd>
-                                       </dl>
+                                          </div>
+                                          </div>
+                                       </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                                       <dl class="dl-horizontal">
-                                          <dt>Descorna</dt>
-                                          <dd>
-                                             <div th:switch="${dia.descorna}">
+                                       <div class="secao">
+                                       <div class="row">
+                                          <div class="col-xs-6 text-right">Descorna</div>
+                                          <div>
+                                             <div class="col-xs-6" th:switch="${dia.descorna}">
                                                 <span th:case="${false}"><i class="fas fa-times-circle vermelho"></i></span>
                                                 <span th:case="${true}"><i class="fas fa-check-circle verde"></i></span>
                                              </div>
-                                          </dd>
-                                          <dt th:switch="${dia.numeroDia}">
+                                          </div>
+                                           </div>
+                                          <div class="row">
+                                          <div class="col-xs-6 text-right" th:switch="${dia.numeroDia}">
                                              <span th:case="${1}">Desinfecção do umbigo</span>
-                                          </dt>
-                                          <dd>
-                                             <div th:switch="${dia.numeroDia}">
+                                          </div>
+                                          <div>
+                                             <div class="col-xs-6" th:switch="${dia.numeroDia}">
                                                 <span th:case="${1}"><i class="fas fa-check-circle verde"></i></span>
                                              </div>
-                                          </dd>
-                                       </dl>
+                                          </div>
+                                          </div>
+                                       </div>
                                     </div>
                                     <div class="col-xs-12">
                                        <div class="row">
+ 
                                           <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                                             <a style="text-decoration: none;" th:id="${dia.id}" onclick="passarIdDia(this)" role="button" data-toggle="modal" data-target="#modalDiaBezerro" title="Completar Dados" class="btn btn-primary"> Completar Dados
+                                             <div th:attr="class=${dia.id}">
+                                                <div class="secao">
+                                       <div class="row">
+                                                   <div class="col-xs-6 text-right">Altura no dia</div>
+                                                   <div class="col-xs-6"><span th:text="${dia.alturaNoDia}" class="alturaNoDia"></span></div>
+                                                    </div>
+                                          <div class="row">
+                                                  <div class="col-xs-6 text-right">Peso no dia</div>
+                                                   <div class="col-xs-6"><span th:text="${dia.pesoNoDia}" class="pesoNoDia"></span></div>
+                                                </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                                                                   <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+                                             <a style="text-decoration: none;" th:id="${dia.id}" onclick="passarIddia(this)" role="button" data-toggle="modal" data-target="#modalDiaBezerro" title="Completar Dados" class="btn btn-primary"> Completar Dados
                                              <input type="hidden" class="form-control" th:id="${dia.bezerro.id}" />
                                              <input type="hidden" class="numeroDia form-control" th:id="${dia.numeroDia}" />
                                              <input type="hidden" class="dataDia form-control" th:id="${dia.dataDoDia}" /></a>
-                                          </div>
-                                          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                                             <div th:attr="class=${dia.id}">
-                                                <dl class="dl-horizontal">
-                                                   <dt>Altura no dia</dt>
-                                                   <dd><span th:text="${dia.alturaNoDia}" class="alturaNoDia"></span></dd>
-                                                   <dt>Peso no dia</dt>
-                                                   <dd><span th:text="${dia.pesoNoDia}" class="pesoNoDia"></span></dd>
-                                                </dl>
-                                             </div>
                                           </div>
                                        </div>
                                     </div>
@@ -217,7 +238,7 @@
       <script type="text/javascript" src="/js/jquery.mask.min.js"></script>
       <script type="text/javascript" src="/js/formDiaBezerro.js"></script>
       <script type="text/javascript">
-         function passarIdDia(elemento) {
+         function passarIddia(elemento) {
              var idelemento = elemento.id;
              $('#formDiaBezerro #idDiaBezerro').val(idelemento);
              var idBezerro = elemento.childNodes[1].id;

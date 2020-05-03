@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.controlebezerras.extras.FormatadorDataEHora;
 
 @Entity(name = "bezerro")
@@ -388,6 +390,7 @@ public class Bezerro implements Comparable<Bezerro> {
 		return pesoPrevistoDia;
 	}
 	
+	@JsonIgnore
 	public String getPesoPrevistoDiaFmt() {
 		return arredondaDuasCasas(pesoPrevistoDia);
 	}

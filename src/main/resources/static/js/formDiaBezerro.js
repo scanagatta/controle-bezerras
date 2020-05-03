@@ -30,7 +30,7 @@ $("#formDiaBezerro").submit(function(e) {
 			    $('#formDiaBezerro input').val(""); //limpa os inputs
                 $('#msg-sucesso').hide(); //esconde o alert
                 $('#formDiaBezerro').find('button, a').removeAttr('disabled'); // desbloqueia os botoes
-			}, 3000);
+			}, 2000);
 
 
 		}
