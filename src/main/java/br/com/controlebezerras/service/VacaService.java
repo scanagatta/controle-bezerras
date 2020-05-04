@@ -20,7 +20,7 @@ public class VacaService {
 
 	@Autowired
 	private VacaRepository repository;
-	
+
 	@Autowired
 	private BezerroRepository bezerroRepository;
 
@@ -76,7 +76,7 @@ public class VacaService {
 		repository.deleteById(id);
 
 	}
-	
+
 	public void deletarFilhos(Long codigo) {
 
 		Iterable<Bezerro> bezerros = repository.buscarFilhos(codigo);

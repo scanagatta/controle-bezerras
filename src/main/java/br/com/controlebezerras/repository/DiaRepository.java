@@ -12,7 +12,7 @@ import org.springframework.data.repository.CrudRepository;
 import br.com.controlebezerras.model.Dia;
 
 public interface DiaRepository extends CrudRepository<Dia, Long> {
-	
+
 	@Query("select d from dia d where data_do_dia = ?1 and d.bezerro.status = 0")
 	List<Dia> listaPorData(LocalDate data);
 
@@ -20,11 +20,10 @@ public interface DiaRepository extends CrudRepository<Dia, Long> {
 	@Modifying
 	@Query("update dia set peso_no_dia = ?2 where id = ?1")
 	void updatePeso(Long id, Double pesoNoDia);
-	
+
 	@Transactional
 	@Modifying
 	@Query("update dia set altura_no_dia = ?2 where id = ?1")
 	void updateAltura(Long id, Double alturaNoDia);
 
 }
-

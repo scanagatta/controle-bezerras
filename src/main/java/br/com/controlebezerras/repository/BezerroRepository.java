@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import br.com.controlebezerras.model.Bezerro;
+import br.com.controlebezerras.model.Dia;
 
 public interface BezerroRepository extends CrudRepository<Bezerro, Long> {
 
@@ -39,11 +40,17 @@ public interface BezerroRepository extends CrudRepository<Bezerro, Long> {
 
 	@Query("SELECT bez FROM bezerro bez where status = 1")
 	List<Bezerro> listaDesmamados();
-	
+
 	@Transactional
 	@Modifying
 	@Query("delete from dia where bezerro_id = ?1")
 	void deleteDias(Long id);
+
+	@Query("select d from dia d where bezerro_id = ?1")
+	List<Dia> findDias(Long idBezerro);
+
+	@Query("select d from dia d where bezerro_id = ?1 and numero_dia = 1")
+	Dia findDiaPrimeiro(Long idBezerro);
 
 	@Transactional
 	@Modifying

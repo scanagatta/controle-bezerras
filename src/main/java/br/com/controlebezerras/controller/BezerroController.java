@@ -73,21 +73,10 @@ public class BezerroController {
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public String salvar(Bezerro bezerro, BindingResult result, Model model) {
 
-		boolean editandoBezerro = bezerro.getId() != null;
-
-		if (editandoBezerro == false && bezerro.getDias().size() == 0) {
-			bezerro.constroiDias(bezerro);
-		} else {
-			service.deleteDias(bezerro.getId());
-			bezerro.constroiDias(bezerro);
-		}
-
-		bezerro.setarValores();
 		service.salvar(bezerro);
 
 		return "redirect:perfil/" + bezerro.getId();
 
-		// nada
 	}
 
 }

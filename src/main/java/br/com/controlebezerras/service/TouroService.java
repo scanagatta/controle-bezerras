@@ -20,7 +20,7 @@ public class TouroService {
 
 	@Autowired
 	private TouroRepository repository;
-	
+
 	@Autowired
 	private BezerroRepository bezerroRepository;
 
@@ -71,13 +71,12 @@ public class TouroService {
 		}
 	}
 
-	
 	public void delete(Long id) {
 		deletarFilhos(id);
 		repository.deleteById(id);
 
 	}
-	
+
 	public void deletarFilhos(Long codigo) {
 
 		Iterable<Bezerro> bezerros = repository.buscarFilhos(codigo);

@@ -28,7 +28,6 @@ public class Dia {
 	private Bezerro bezerro;
 
 	private int colostro;
-	private int suplementoColostro;
 	private int leite;
 	private int racao;
 	private boolean feno;
@@ -39,19 +38,30 @@ public class Dia {
 
 	public Dia() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Dia(int numeroDia, LocalDate dataDoDia, Double pesoNoDia, Double alturaNoDia, int colostro,
-			int suplementoColostro, int leite, int racao, boolean vermifugacao, boolean feno, boolean descorna,
-			Bezerro bezerro) {
+	public Dia(int numeroDia, LocalDate dataDoDia, Double pesoNoDia, Double alturaNoDia, int colostro, int leite,
+			int racao, boolean vermifugacao, boolean feno, boolean descorna, Bezerro bezerro) {
 		super();
 		this.dataDoDia = dataDoDia;
 		this.numeroDia = numeroDia;
 		this.pesoNoDia = pesoNoDia;
 		this.alturaNoDia = alturaNoDia;
 		this.colostro = colostro;
-		this.suplementoColostro = suplementoColostro;
+		this.leite = leite;
+		this.racao = racao;
+		this.vermifugacao = vermifugacao;
+		this.feno = feno;
+		this.descorna = descorna;
+		this.bezerro = bezerro;
+	}
+
+	public Dia(int numeroDia, LocalDate dataDoDia, int colostro, int leite, int racao, boolean vermifugacao,
+			boolean feno, boolean descorna, Bezerro bezerro) {
+		super();
+		this.dataDoDia = dataDoDia;
+		this.numeroDia = numeroDia;
+		this.colostro = colostro;
 		this.leite = leite;
 		this.racao = racao;
 		this.vermifugacao = vermifugacao;
@@ -98,14 +108,6 @@ public class Dia {
 
 	public void setColostro(int colostro) {
 		this.colostro = colostro;
-	}
-
-	public int getSuplementoColostro() {
-		return suplementoColostro;
-	}
-
-	public void setSuplementoColostro(int suplementoColostro) {
-		this.suplementoColostro = suplementoColostro;
 	}
 
 	public int getLeite() {

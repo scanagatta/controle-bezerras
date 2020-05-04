@@ -2,12 +2,11 @@ package br.com.controlebezerras.service;
 
 import java.util.List;
 
-import javax.persistence.NoResultException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.controlebezerras.model.Bezerro;
+import br.com.controlebezerras.model.Dia;
 import br.com.controlebezerras.repository.BezerroRepository;
 
 @Service
@@ -17,12 +16,32 @@ public class BezerroService {
 	private BezerroRepository repository;
 
 	public Iterable<Bezerro> obterTodos() {
-		Iterable<Bezerro> bezerros = repository.findAll();
-		return bezerros;
+		return repository.findAll();
+	}
+
+	private Bezerro preSalvar(Bezerro bezerro) {
+		if (bezerro.getId() == null) {
+			bezerro.constroiDias(bezerro);
+		} else {
+			Dia diaPrimeiro = this.getDiaPrimeiro(bezerro.getId());
+			if (diaPrimeiro != null) {
+				if (!diaPrimeiro.getDataDoDia().equals(bezerro.getDataNascimento())) {
+					bezerro.setDias(null);
+					this.deleteDias(bezerro.getId());
+					bezerro.constroiDias(bezerro);
+				}
+			} else {
+				bezerro.constroiDias(bezerro);
+			}
+		}
+
+		bezerro.setarValores();
+		return bezerro;
+
 	}
 
 	public void salvar(Bezerro bezerro) {
-		repository.save(bezerro);
+		repository.save(this.preSalvar(bezerro));
 	}
 
 	public void delete(Long id) {
@@ -36,102 +55,66 @@ public class BezerroService {
 
 	public Long contaBezerros() {
 		long result = 0;
-		try {
-			result = repository.count();
-			return result;
-		} catch (NoResultException e) {
-			return null;
-		}
+		result = repository.count();
+		return result;
 	}
 
 	public Integer qtdStatusDesmamado() {
 		Integer result = 0;
-		try {
-			result = repository.qtdStatusDesmamado();
-			return result;
-		} catch (NoResultException e) {
-			return null;
-		}
+		result = repository.qtdStatusDesmamado();
+		return result;
 	}
 
 	public Integer qtdStatusAmamentado() {
 		Integer result = 0;
-		try {
-			result = repository.qtdStatusAmamentado();
-			return result;
-		} catch (NoResultException e) {
-			return null;
-		}
+		result = repository.qtdStatusAmamentado();
+		return result;
 	}
 
 	public Integer qtdStatusDoado() {
 		Integer result = 0;
-		try {
-			result = repository.qtdStatusDoado();
-			return result;
-		} catch (NoResultException e) {
-			return null;
-		}
+		result = repository.qtdStatusDoado();
+		return result;
 	}
 
 	public Integer qtdStatusVendido() {
 		Integer result = 0;
-		try {
-			result = repository.qtdStatusVendido();
-			return result;
-		} catch (NoResultException e) {
-			return null;
-		}
+		result = repository.qtdStatusVendido();
+		return result;
 	}
 
 	public Integer qtdStatusMorto() {
 		Integer result = 0;
-		try {
-			result = repository.qtdStatusMorto();
-			return result;
-		} catch (NoResultException e) {
-			return null;
-		}
+		result = repository.qtdStatusMorto();
+		return result;
 	}
 
 	public Integer qtdSexoMasculino() {
 		Integer result = 0;
-		try {
-			result = repository.qtdSexoMasculino();
-			return result;
-		} catch (NoResultException e) {
-			return null;
-		}
+		result = repository.qtdSexoMasculino();
+		return result;
 	}
 
 	public Integer qtdSexoFeminino() {
 		Integer result = 0;
-		try {
-			result = repository.qtdSexoFeminino();
-			return result;
-		} catch (NoResultException e) {
-			return null;
-		}
+		result = repository.qtdSexoFeminino();
+		return result;
 	}
 
 	public List<Bezerro> listaDesmamados() {
-		List<Bezerro> bezerros;
-		try {
-			bezerros = repository.listaDesmamados();
-			return bezerros;
-		} catch (NoResultException e) {
-			return null;
-		}
+		return repository.listaDesmamados();
 	}
 
 	public List<Bezerro> listaAmamentados() {
-		List<Bezerro> bezerros;
-		try {
-			bezerros = repository.listaAmamentados();
-			return bezerros;
-		} catch (NoResultException e) {
-			return null;
-		}
+		return repository.listaAmamentados();
+	}
+
+	public List<Dia> getDias(Long idBezerro) {
+		return repository.findDias(idBezerro);
+	}
+
+	public Dia getDiaPrimeiro(Long idBezerro) {
+		return repository.findDiaPrimeiro(idBezerro);
 	}
 
 	public void updatePeso(Bezerro bezerro) {
@@ -143,8 +126,7 @@ public class BezerroService {
 	}
 
 	public Bezerro get(Long id) {
-		Bezerro bezerro = repository.get(id);
-		return bezerro;
+		return repository.get(id);
 	}
 
 }

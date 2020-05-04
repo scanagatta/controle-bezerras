@@ -33,7 +33,7 @@ public class IndexController {
 		preencheDados(model);
 		return "index";
 	}
-	
+
 	@RequestMapping("/offline")
 	public String offline(Model model) {
 		preencheDados(model);

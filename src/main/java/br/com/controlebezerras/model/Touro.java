@@ -29,7 +29,7 @@ public class Touro {
 	private StatusAdulto status;
 
 	private Raca raca;
-	
+
 	private String marca;
 
 	@OneToMany(mappedBy = "touro")

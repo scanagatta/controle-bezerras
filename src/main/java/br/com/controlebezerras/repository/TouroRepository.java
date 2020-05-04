@@ -17,19 +17,19 @@ public interface TouroRepository extends CrudRepository<Touro, Long> {
 
 	@Query("select b from bezerro b where touro_id = ?1")
 	Iterable<Bezerro> buscarFilhos(Long codigo);
-	
+
 	@Query("select count(id) from bezerro where touro_id = ?1")
 	Integer contaFilhos(Long codigo);
-	
+
 	@Query("SELECT COUNT(id) FROM touro where status = 0")
 	Integer qtdTourosAtivos();
-	
+
 	@Query("SELECT COUNT(id) FROM touro where status = 1")
 	Integer qtdTourosVendidos();
-	
+
 	@Query("SELECT COUNT(id) FROM touro where status = 2")
 	Integer qtdTourosInativos();
-	
+
 	@Query("SELECT COUNT(id) FROM touro where status = 3")
 	Integer qtdTourosMortos();
 }

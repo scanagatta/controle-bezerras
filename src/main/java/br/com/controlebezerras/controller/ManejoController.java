@@ -61,7 +61,9 @@ public class ManejoController {
 		if (numeroDia == 0) {
 			bezerro.setGanhoPesoDia(0d);
 		} else {
-			bezerro.setGanhoPesoDia((bezerro.getUltimaPesagem() - bezerro.getPesoInicial()) / numeroDia);
+			if (bezerro.getPesoInicial() != null) {
+				bezerro.setGanhoPesoDia((bezerro.getUltimaPesagem() - bezerro.getPesoInicial()) / numeroDia);
+			}
 		}
 		bezerroService.salvar(bezerro);
 		return dia;

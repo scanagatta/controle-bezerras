@@ -2,25 +2,22 @@ package br.com.controlebezerras.model;
 
 import java.util.Collection;
 
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
-
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public class Usuario implements UserDetails{
-	
+public class Usuario implements UserDetails {
+
 	private static final long serialVersionUID = 5544708509058909509L;
 
 	@Id
 	private String login;
-	
+
 	private String nomeCompleto;
-	
+
 	private String senha;
 
 	public String getLogin() {
@@ -88,7 +85,5 @@ public class Usuario implements UserDetails{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
 
 }

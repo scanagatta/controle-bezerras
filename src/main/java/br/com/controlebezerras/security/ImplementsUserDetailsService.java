@@ -13,16 +13,16 @@ import br.com.controlebezerras.repository.UsuarioRepository;
 
 @Repository
 @Transactional
-public class ImplementsUserDetailsService implements UserDetailsService{
+public class ImplementsUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private UsuarioRepository ur;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 		Usuario usuario = ur.findByLogin(login);
-		
-		if(usuario == null){
+
+		if (usuario == null) {
 			throw new UsernameNotFoundException("Usuario não encontrado!");
 		}
 		return usuario;

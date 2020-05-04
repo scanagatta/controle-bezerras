@@ -88,6 +88,7 @@
                   <th class="text-center">Nº</th>
                   <th>Nome</th>
                   <th>Raça</th>
+                  <th>Marca</th>
                   <th class="text-center">Qtd filhos</th>
                   <th class="text-center">Status</th>
                   <th class="text-center">Opções</th>
@@ -104,6 +105,7 @@
                   <td class="text-center info-numero"><span th:text="${touro.numero}"></span></td>
                   <td class="info-nome"><span th:text="${touro.nome}"></span></td>
                   <td><span th:text="${touro.raca.descricao}"></span></td>
+                  <td><span th:text="${touro.marca}"></span></td>
                   <td class="text-center"><span th:text="${touro.bezerros.size()}"></span></td>
                   <td class="text-center"><span th:text="${touro.status.descricao}" class="label label-sm label-info"></span></td>
                   <td class="text-center">

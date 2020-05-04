@@ -94,7 +94,7 @@ public class VacaController {
 
 	}
 
-	//do modal
+	// do modal
 	@RequestMapping(value = "/excluir", method = RequestMethod.POST)
 	public String excluir(Vaca vaca) {
 		service.delete(vaca.getId());

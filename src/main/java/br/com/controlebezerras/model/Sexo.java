@@ -1,8 +1,9 @@
 package br.com.controlebezerras.model;
 
 public enum Sexo {
+
 	MACHO("Macho"), FEMEA("Fêmea");
-	
+
 	public String getSexo() {
 		return getDescricao();
 	}
