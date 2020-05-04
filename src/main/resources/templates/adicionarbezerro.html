@@ -73,6 +73,7 @@
       <div class="container-fluid panel">
         <form  th:action="@{/bezerro/salvar}" th:object="${bezerro}" method="post" style="margin-bottom: 50px;">
           <input type="hidden" class="form-control" th:field="*{id}"/>
+          <input type="hidden" class="form-control" th:field="*{ganhoPesoDia}"/>
           <div class="row">
             <div class="col-sm-8">
               <div class="form-group">
