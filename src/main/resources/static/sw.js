@@ -1,5 +1,6 @@
 let arquivos = [
 	"/",
+	"/login",
 	"/index",
 	"/offline",
 	"bezerro/listabezerros",
