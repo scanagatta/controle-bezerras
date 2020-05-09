@@ -4,7 +4,7 @@
   "scope": "/",
   "lang": "pt-BR",
   "orientation": "any",
-  "start_url": "/login",
+  "start_url": "/index",
   "background_color": "#436073",
   "display": "standalone",
   "theme_color": "#436073",
