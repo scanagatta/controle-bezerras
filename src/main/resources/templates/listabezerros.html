@@ -100,7 +100,11 @@
               <th:block th:each="bezerro : ${bezerros}">
                 <tr class="animal"  th:attr="id=${bezerro.id}">
                   <td class="text-center info-numero"><span th:text="${bezerro.numero}"></span></td>
-                  <td class="info-nome"><span th:text="${bezerro.nome}"></span></td>
+                  <td class="info-nome">
+                  <a th:href="@{/bezerro/perfil/{codigo}(codigo=${bezerro.id})}"  title="Ir para o perfil">
+                  	<span th:text="${bezerro.nome}"></span>
+                  </a>
+                  </td>
                   <td class="text-center"><span th:text="${bezerro.dataNascimentoTexto}"></span></td>
                   <td class="text-center"><span th:text="${bezerro.sexo.descricao}"></span></td>
                   <td><span th:text="${bezerro.raca.descricao}"></span></td>

@@ -16,7 +16,7 @@ public class BezerroService {
 	private BezerroRepository repository;
 
 	public Iterable<Bezerro> obterTodos() {
-		return repository.findAll();
+		return repository.findTodos();
 	}
 
 	private Bezerro preSalvar(Bezerro bezerro) {

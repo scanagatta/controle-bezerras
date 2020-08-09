@@ -64,4 +64,7 @@ public interface BezerroRepository extends CrudRepository<Bezerro, Long> {
 
 	@Query("select b from bezerro b where id = ?1")
 	Bezerro get(Long id);
+
+	@Query("select b from bezerro b order by data_nascimento desc")
+	Iterable<Bezerro> findTodos();
 }
