@@ -72,9 +72,9 @@ public class FormatadorDataEHora {
 				textoMes = " meses";
 			}
 
-			String textoAno = " ano";
+			String textoAno = " ano, ";
 			if (anos > 1) {
-				textoMes = " anos";
+				textoAno = " anos, ";
 			}
 
 			String resposta = anos + textoAno + meses + textoMes + " e " + dias + textoDia;

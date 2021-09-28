@@ -32,4 +32,7 @@ public interface TouroRepository extends CrudRepository<Touro, Long> {
 
 	@Query("SELECT COUNT(id) FROM touro where status = 3")
 	Integer qtdTourosMortos();
+
+	@Query("select t from touro t order by nome")
+	Iterable<Touro> findAll();
 }

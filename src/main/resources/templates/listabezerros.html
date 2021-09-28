@@ -85,6 +85,7 @@
             <table class="table table-hover table-striped table-condensed table-bordered">
               <thead>
                 <tr>
+                  <th class="text-center">Opções</th>
                   <th class="text-center">Nº</th>
                   <th>Nome</th>
                   <th class="text-center">Data nascimento</th>
@@ -94,11 +95,16 @@
                   <th>Pai</th>
                   <th class="text-center">Status</th>
                   <th>Observação</th>
-                  <th class="text-center">Opções</th>
                 </tr>
               </thead>
               <th:block th:each="bezerro : ${bezerros}">
                 <tr class="animal"  th:attr="id=${bezerro.id}">
+                  <td class="text-center">
+                    <a th:href="@{/bezerro/perfil/{codigo}(codigo=${bezerro.id})}"  title="Ir para o perfil" class="btn-xs btn-info">
+                    <i class="far fa-eye"></i></a>
+<!--                     <a th:href="@{/bezerro/excluir/{codigo}(codigo=${bezerro.id})}" title="Excluir" class="btn-xs btn-danger"> -->
+<!--                     <i class="fas fa-trash-alt"></i></a> -->
+                  </td>
                   <td class="text-center info-numero"><span th:text="${bezerro.numero}"></span></td>
                   <td class="info-nome">
                   <a th:href="@{/bezerro/perfil/{codigo}(codigo=${bezerro.id})}"  title="Ir para o perfil">
@@ -112,12 +118,6 @@
                   <td><span th:text="${bezerro.touro.numeroNome}"></span></td>
                   <td class="text-center"><span th:text="${bezerro.status.descricao}" class="label label-sm label-info"></span></td>
                   <td><span th:text="${bezerro.observacao}"></span></td>
-                  <td class="text-center">
-                    <a th:href="@{/bezerro/perfil/{codigo}(codigo=${bezerro.id})}"  title="Ir para o perfil" class="btn-xs btn-info">
-                    <i class="far fa-eye"></i></a>
-<!--                     <a th:href="@{/bezerro/excluir/{codigo}(codigo=${bezerro.id})}" title="Excluir" class="btn-xs btn-danger"> -->
-<!--                     <i class="fas fa-trash-alt"></i></a> -->
-                  </td>
                 </tr>
               </th:block>
             </table>

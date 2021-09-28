@@ -33,4 +33,7 @@ public interface VacaRepository extends CrudRepository<Vaca, Long> {
 	@Query("SELECT COUNT(id) FROM vaca where status = 3")
 	Integer qtdVacasMortas();
 
+	@Query("select v from vaca v order by nome")
+	Iterable<Vaca> findAll();
+
 }

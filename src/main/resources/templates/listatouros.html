@@ -84,23 +84,23 @@
             <table class="table table-hover table-condensed table-bordered">
               <thead>
                 <tr>
-                  <th class="text-center col-xs-1">Filhos</th>
+                  <th class="text-center">Opções</th>
                   <th class="text-center">Nº</th>
                   <th>Nome</th>
                   <th>Raça</th>
                   <th>Marca</th>
                   <th class="text-center">Qtd filhos</th>
                   <th class="text-center">Status</th>
-                  <th class="text-center">Opções</th>
+                  <th class="text-center col-xs-1">Filhos</th>
                 </tr>
               </thead>
               <th:block th:each="touro : ${touros}">
                 <tr class="animal" th:attr="id=${touro.id}">
-                  <td class="text-center" onclick="exibeFilhos(this)">
-                    <a title="Ver filhos">
-                      <i class="ace-icon fa fa-angle-double-down"></i>
-                      <span class="sr-only">Filhos</span>
-                    </a>
+                  <td class="text-center">
+                    <a th:href="@{/touro/editar/{codigo}(codigo=${touro.id})}"  title="Editar" class="btn-xs btn-info">
+                    <i class="fa fa-edit"></i></a>
+                    <a style="text-decoration: none;" th:id="${touro.id}" onclick="excluir(this)" role="button" data-toggle="modal" data-target="#modalExcluirTouro" title="Excluir" class="btn-xs btn-danger">
+                    <i class="fas fa-trash-alt"></i></a>
                   </td>
                   <td class="text-center info-numero"><span th:text="${touro.numero}"></span></td>
                   <td class="info-nome"><span th:text="${touro.nome}"></span></td>
@@ -108,11 +108,11 @@
                   <td><span th:text="${touro.marca}"></span></td>
                   <td class="text-center"><span th:text="${touro.bezerros.size()}"></span></td>
                   <td class="text-center"><span th:text="${touro.status.descricao}" class="label label-sm label-info"></span></td>
-                  <td class="text-center">
-                    <a th:href="@{/touro/editar/{codigo}(codigo=${touro.id})}"  title="Editar" class="btn-xs btn-info">
-                    <i class="fa fa-edit"></i></a>
-                    <a style="text-decoration: none;" th:id="${touro.id}" onclick="excluir(this)" role="button" data-toggle="modal" data-target="#modalExcluirTouro" title="Excluir" class="btn-xs btn-danger">
-                    <i class="fas fa-trash-alt"></i></a>
+                  <td class="text-center" onclick="exibeFilhos(this)">
+                    <a title="Ver filhos">
+                      <i class="ace-icon fa fa-angle-double-down"></i>
+                      <span class="sr-only">Filhos</span>
+                    </a>
                   </td>
                 </tr>
                 <tr th:each="bezerro : ${touro.bezerros}" th:attr="class=${touro.id}" style="display: none;">

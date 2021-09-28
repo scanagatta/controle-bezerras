@@ -84,23 +84,23 @@
             <table class="table table-hover table-condensed table-bordered">
               <thead>
                 <tr>
-                  <th class="text-center col-xs-1">Filhos</th>
+                  <th class="text-center">Opções</th>
                   <th class="text-center">Nº</th>
                   <th>Nome</th>
                   <th>Raça</th>
                   <th class="text-center">Data nascimento</th>
                   <th class="text-center">Qtd filhos</th>
                   <th class="text-center">Status</th>
-                  <th class="text-center">Opções</th>
+                  <th class="text-center col-xs-1">Filhos</th>
                 </tr>
               </thead>
               <th:block th:each="vaca : ${vacas}">
                 <tr class="animal" th:attr="id=${vaca.id}">
-                  <td class="text-center" onclick="exibeFilhos(this)">
-                    <a title="Ver Filhos">
-                      <i class="ace-icon fa fa-angle-double-down"></i>
-                      <span class="sr-only">Filhos</span>
-                    </a>
+                  <td class="text-center">
+                    <a th:href="@{/vaca/editar/{codigo}(codigo=${vaca.id})}"  title="Editar" class="btn-xs btn-info">
+                    <i class="fa fa-edit"></i></a>
+                    <a style="text-decoration: none;" th:id="${vaca.id}" onclick="excluir(this)" role="button" data-toggle="modal" data-target="#modalExcluirVaca" title="Excluir" class="btn-xs btn-danger">
+                    <i class="fas fa-trash-alt"></i></a>
                   </td>
                   <td class="text-center info-numero"><span th:text="${vaca.numero}"></span></td>
                   <td class="info-nome"><span th:text="${vaca.nome}"></span></td>
@@ -108,12 +108,13 @@
                   <td class="text-center"><span th:text="${vaca.dataNascimentoTexto}"></span></td>
                   <td class="text-center"><span th:text="${vaca.bezerros.size()}"></span></td>
                   <td class="text-center"><span th:text="${vaca.status.descricao}" class="label label-sm label-info"></span></td>
-                  <td class="text-center">
-                    <a th:href="@{/vaca/editar/{codigo}(codigo=${vaca.id})}"  title="Editar" class="btn-xs btn-info">
-                    <i class="fa fa-edit"></i></a>
-                    <a style="text-decoration: none;" th:id="${vaca.id}" onclick="excluir(this)" role="button" data-toggle="modal" data-target="#modalExcluirVaca" title="Excluir" class="btn-xs btn-danger">
-                    <i class="fas fa-trash-alt"></i></a>
-                  </tr>
+                  <td class="text-center" onclick="exibeFilhos(this)">
+                    <a title="Ver Filhos">
+                      <i class="ace-icon fa fa-angle-double-down"></i>
+                      <span class="sr-only">Filhos</span>
+                    </a>
+                  </td>
+                 </tr>
                   <tr th:each="bezerro : ${vaca.bezerros}" th:attr="class=${vaca.id}" style="display: none;">
                     <td colspan="9999">
                       <div class="panel" style="margin-bottom: 0px !important;">
