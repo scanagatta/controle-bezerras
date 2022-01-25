@@ -13,7 +13,7 @@ import br.com.controlebezerras.model.Dia;
 
 public interface DiaRepository extends CrudRepository<Dia, Long> {
 
-	@Query("select d from dia d where data_do_dia = ?1 and d.bezerro.status = 0 order by d.bezerro.baia asc, d.bezerro.cocho asc")
+	@Query("select d from dia d where data_do_dia = ?1 and d.bezerro.status = 0 order by d.bezerro.dataNascimento desc")
 	List<Dia> listaPorData(LocalDate data);
 
 	@Transactional

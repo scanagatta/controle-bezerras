@@ -37,6 +37,24 @@ public class ManejoController {
 		model.addAttribute("dias", dias);
 		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();
 		model.addAttribute("dataEHoraAtual", dataEHoraAtual);
+
+		int qtdLitros = 0;
+		int qtdLitrosManha = 0;
+		int qtdLitrosTarde = 0;
+
+		for (Dia dia : dias) {
+			qtdLitros += dia.getLeite();
+			if (dia.getLeite() > 4) {
+				qtdLitrosTarde += 4;
+				qtdLitrosManha += dia.getLeite() - 4;
+			} else {
+				qtdLitrosTarde += dia.getLeite();
+			}
+		}
+
+		model.addAttribute("qtdLitros", qtdLitros);
+		model.addAttribute("qtdLitrosManha", qtdLitrosManha);
+		model.addAttribute("qtdLitrosTarde", qtdLitrosTarde);
 		return "listamanejo";
 	}
 
@@ -76,7 +94,7 @@ public class ManejoController {
 	}
 
 	@RequestMapping("/listamanejo/{data}")
-	public ModelAndView perfil(@PathVariable("data") String data) {
+	public ModelAndView result(@PathVariable("data") String data) {
 		ModelAndView mv = new ModelAndView("listamanejo");
 		String dataEHoraAtual = FormatadorDataEHora.dataAtual() + " ás " + FormatadorDataEHora.horaAtual();
 		mv.addObject("dataEHoraAtual", dataEHoraAtual);
@@ -85,6 +103,25 @@ public class ManejoController {
 		LocalDate date = LocalDate.parse(data, formatter);
 		Iterable<Dia> dias = diaService.listaPorData(date);
 		mv.addObject("dias", dias);
+
+		int qtdLitros = 0;
+		int qtdLitrosManha = 0;
+		int qtdLitrosTarde = 0;
+
+		for (Dia dia : dias) {
+			qtdLitros += dia.getLeite();
+			if (dia.getLeite() > 4) {
+				qtdLitrosTarde += 4;
+				qtdLitrosManha += dia.getLeite() - 4;
+			} else {
+				qtdLitrosTarde += dia.getLeite();
+			}
+		}
+
+		mv.addObject("qtdLitros", qtdLitros);
+		mv.addObject("qtdLitrosManha", qtdLitrosManha);
+		mv.addObject("qtdLitrosTarde", qtdLitrosTarde);
+
 		return mv;
 	}
 }
